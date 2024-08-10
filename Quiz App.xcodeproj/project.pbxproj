@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1038550D2C676DC50053048F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038550C2C676DC50053048F /* HomeView.swift */; };
 		10DEA09D2C6761C60079C9C4 /* Quiz_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DEA09C2C6761C60079C9C4 /* Quiz_AppApp.swift */; };
 		10DEA09F2C6761C60079C9C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DEA09E2C6761C60079C9C4 /* ContentView.swift */; };
 		10DEA0A12C6761C70079C9C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10DEA0A02C6761C70079C9C4 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1038550C2C676DC50053048F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../../../HomeView.swift; sourceTree = "<group>"; };
 		10DEA0992C6761C60079C9C4 /* Quiz App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10DEA09C2C6761C60079C9C4 /* Quiz_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_AppApp.swift; sourceTree = "<group>"; };
 		10DEA09E2C6761C60079C9C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		10DEA0AA2C67621C0079C9C4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1038550C2C676DC50053048F /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1038550D2C676DC50053048F /* HomeView.swift in Sources */,
 				10DEA09F2C6761C60079C9C4 /* ContentView.swift in Sources */,
 				10DEA09D2C6761C60079C9C4 /* Quiz_AppApp.swift in Sources */,
 			);
