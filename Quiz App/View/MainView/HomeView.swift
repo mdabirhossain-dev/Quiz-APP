@@ -17,55 +17,55 @@ struct HomeView: View {
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
         
-        ZStack(alignment: .top) {
-            GradientView().edgesIgnoringSafeArea(.all)
+        ZStack(alignment: .topLeading) {
+            GradientView()
+                .edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .leading, spacing: 16) {
-                HStack {
-                    VStack {
-                        Spacer()
-                        Image("sun")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 141, height: 141)
-                            .overlay {
-                                VStack {
-                                    Text("500")
-                                        .foregroundColor(.darkRed)
-                                        .font(.system(size: 32, weight: .bold))
-                                    
-                                    Text("High Score")
-                                        .foregroundColor(.black)
-                                        .font(.system(size: 13))
-                                }
+                HStack(alignment: .bottom) {
+                    Image("sun")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 141, height: 141)
+                        .overlay {
+                            VStack {
+                                Text("500")
+                                    .foregroundColor(.darkRed)
+                                    .font(.system(size: 32, weight: .bold))
+                                
+                                Text("High Score")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 13))
                             }
-                    }
+                        }
                     
                     Spacer()
                     
-                    VStack {
-                        Image("coins")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 207, height: 164)
-//                        .padding(.bottom, 70)
-                        Spacer()
-                    }
+                    Image("coins")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 186, height: 169)
+                        .padding(.trailing, -16)
+                        .padding(.bottom, 16)
                 }
-                .padding(.top, 40)
+                .frame(height: screenHeight / 4.5)
+                .padding([.horizontal, .top])
                 
-                Text("JRF Sundays's")
-                    .font(.system(size: 32, weight: .heavy))
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("JRF Sundays's")
+                        .font(.system(size: 32, weight: .heavy))
+                    
+                    Text("Supper Quiz")
+                        .font(.system(size: 48, weight: .heavy))
+                    
+                    Text("Play Super Quiz & earn **500** coin")
+                        .font(.system(size: 13))
+                }
+                .padding(.horizontal)
                 
-                Text("Supper Quiz")
-                    .font(.system(size: 48, weight: .heavy))
-                
-                Text("Play Super Quiz & earn **500** coin")
-                    .font(.system(size: 13))
+                QuizBottomInfoView()
             }
             .foregroundColor(.white)
-            .frame(height: screenHeight / 3.7)
-            .padding()
         }
         .customNavBar(isHome: true, isTrailing: true)
         .navigationBarHidden(false)
