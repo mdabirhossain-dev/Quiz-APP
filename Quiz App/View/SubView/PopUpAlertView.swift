@@ -24,7 +24,7 @@ struct PopUpAlertView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 128, height: 73)
             
-            Text(alertMsg)
+            Text(alertMsg.rawValue)
                 .foregroundColor(.black)
                 .font(.system(size: 16, weight: .semibold))
             
@@ -56,6 +56,6 @@ struct PopUpAlertView: View {
 
 struct PopUpAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        PopUpAlertView(isAlert: .constant(false), imageAsset: ImageAsset.warningBack, alertMsg: "Title", description: "defsdfa")
+        PopUpAlertView(isAlert: .constant(false), imageAsset: ImageAsset.warningBack, alertMsg: AlertWarning.warningBack, description: "defsdfa")
     }
 }

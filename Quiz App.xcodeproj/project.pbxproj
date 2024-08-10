@@ -21,7 +21,6 @@
 		106D9CB62C676EDF001FDF03 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D9CB52C676EDF001FDF03 /* QuizModel.swift */; };
 		106D9CB82C676F0C001FDF03 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D9CB72C676F0C001FDF03 /* QuizViewModel.swift */; };
 		10DEA09D2C6761C60079C9C4 /* Quiz_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DEA09C2C6761C60079C9C4 /* Quiz_AppApp.swift */; };
-		10DEA09F2C6761C60079C9C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DEA09E2C6761C60079C9C4 /* ContentView.swift */; };
 		10DEA0A12C6761C70079C9C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10DEA0A02C6761C70079C9C4 /* Assets.xcassets */; };
 		10DEA0A42C6761C70079C9C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10DEA0A32C6761C70079C9C4 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -42,7 +41,6 @@
 		106D9CB72C676F0C001FDF03 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		10DEA0992C6761C60079C9C4 /* Quiz App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10DEA09C2C6761C60079C9C4 /* Quiz_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_AppApp.swift; sourceTree = "<group>"; };
-		10DEA09E2C6761C60079C9C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		10DEA0A02C6761C70079C9C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10DEA0A32C6761C70079C9C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +117,6 @@
 				10DEA0AA2C67621C0079C9C4 /* View */,
 				10DEA0AC2C6762320079C9C4 /* ViewModel */,
 				103855122C67728F0053048F /* Extension */,
-				10DEA09E2C6761C60079C9C4 /* ContentView.swift */,
 				10DEA09C2C6761C60079C9C4 /* Quiz_AppApp.swift */,
 				10DEA0A02C6761C70079C9C4 /* Assets.xcassets */,
 				10DEA0A22C6761C70079C9C4 /* Preview Content */,
@@ -243,7 +240,6 @@
 				103855232C67EEC50053048F /* PopUpAlertView.swift in Sources */,
 				1038551D2C67DD200053048F /* CustomRoundedCorners.swift in Sources */,
 				103855112C6771A40053048F /* GradientView.swift in Sources */,
-				10DEA09F2C6761C60079C9C4 /* ContentView.swift in Sources */,
 				106D9CB82C676F0C001FDF03 /* QuizViewModel.swift in Sources */,
 				103855272C67F1070053048F /* ImageAssets.swift in Sources */,
 				10DEA09D2C6761C60079C9C4 /* Quiz_AppApp.swift in Sources */,
