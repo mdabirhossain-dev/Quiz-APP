@@ -13,5 +13,6 @@ extension Color {
     static let darkRed = Color(red: 190/255, green: 30/255, blue: 45/255)
     static let wrongAnsRed = Color(red: 255/255, green: 14/255, blue: 14/255)
     static let rightAnsGreen = Color(red: 203/255, green: 252/255, blue: 203/255)
+    static let timerBackground = Color(red: 240/255, green: 243/255, blue: 255/255)
 }
 
