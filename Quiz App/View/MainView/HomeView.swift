@@ -12,6 +12,8 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @State private var isAlert = false
+    
     var body: some View {
         
         let screenHeight = UIScreen.main.bounds.height
@@ -63,9 +65,13 @@ struct HomeView: View {
                 }
                 .padding(.horizontal)
                 
-                QuizBottomInfoView()
+                QuizBottomInfoView(isAlert: $isAlert)
             }
             .foregroundColor(.white)
+            
+            if isAlert {
+                PopUpAlertView(isAlert: $isAlert, imageAsset: .warningShield, alertMsg: .warningShield, description: "")
+            }
         }
         .customNavBar(isHome: true, isTrailing: true)
         .navigationBarHidden(false)

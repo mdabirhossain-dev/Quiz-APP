@@ -12,6 +12,8 @@ import SwiftUI
 
 struct QuizBottomInfoView: View {
     
+    @Binding var isAlert: Bool
+    
     var body: some View {
         let screenHeight = UIScreen.main.bounds.height
         VStack(alignment: .leading, spacing: 16) {
@@ -60,7 +62,7 @@ struct QuizBottomInfoView: View {
 
 struct QuizBottomInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizBottomInfoView()
+        QuizBottomInfoView(isAlert: .constant(false))
     }
 }
 
