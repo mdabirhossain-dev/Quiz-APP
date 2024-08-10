@@ -15,7 +15,9 @@ struct QuizBottomInfoView: View {
     @Binding var isAlert: Bool
     
     var body: some View {
+        
         let screenHeight = UIScreen.main.bounds.height
+        
         VStack(alignment: .leading, spacing: 16) {
             Text("Today's Quiz on")
                 .font(.system(size: 13))
@@ -44,7 +46,9 @@ struct QuizBottomInfoView: View {
             .padding(.top, -8)
             
             Button("PLAY QUIZ NOW") {
-                
+                withAnimation {
+                    isAlert = true
+                }
             }
             .buttonStyle(CustomRoundedButtonStyle(28))
             .padding(.vertical)

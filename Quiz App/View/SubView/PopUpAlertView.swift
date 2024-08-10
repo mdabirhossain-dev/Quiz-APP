@@ -17,40 +17,73 @@ struct PopUpAlertView: View {
     let alertMsg: AlertWarning
     let description: String
     
+    @State private var scaleEffect: CGFloat = 1.0
+    
     var body: some View {
-        VStack(spacing: 16) {
-            Image(imageAsset.rawValue)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 128, height: 73)
-            
-            Text(alertMsg.rawValue)
-                .foregroundColor(.black)
-                .font(.system(size: 16, weight: .semibold))
-            
-            if description.isNotEmpty {
-                Text(description)
-                    .foregroundColor(.black)
-                    .font(.system(size: 14, weight: .regular))
-            }
-            
-            HStack {
-                Button("No") {
-                    
+        ZStack {
+            Color.black.opacity(0.05)
+                .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    removeAlert()
                 }
-                .buttonStyle(CustomRoundedButtonStyle(12, .dimRed))
+            
+            VStack(spacing: 16) {
+                Image(imageAsset.rawValue)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 128, height: 73)
                 
-                Button("Yes") {
-                    
+                Text(alertMsg.rawValue)
+                    .foregroundColor(.black)
+                    .font(.system(size: 16, weight: .semibold))
+                
+                if description.isNotEmpty {
+                    Text(description)
+                        .foregroundColor(.black)
+                        .font(.system(size: 14, weight: .regular))
                 }
-                .buttonStyle(CustomRoundedButtonStyle(12, .darkRed))
+                
+                HStack {
+                    Button("No") {
+                        removeAlert()
+                    }
+                    .buttonStyle(CustomRoundedButtonStyle(12, .dimRed))
+                    
+                    Button("Yes") {
+                        withAnimation {
+                            isAlert = false
+                        }
+                    }
+                    .buttonStyle(CustomRoundedButtonStyle(12, .darkRed))
+                }
+            }
+            .padding()
+            .padding(.vertical, 6)
+            .frame(width: 280)
+            .background(.white)
+            .clipShape(CustomRoundedCorners(topLeft: 8, topRight: 8, bottomLeft: 8, bottomRight: 8))
+            .scaleEffect(scaleEffect)
+            .onAppear(perform: {
+                withAnimation {
+                    scaleEffect = 1.2
+                }
+            })
+            .onDisappear(perform: {
+                withAnimation {
+                    scaleEffect = 0.8
+                }
+            })
+        }
+    }
+    
+    func removeAlert() {
+        withAnimation {
+            scaleEffect = 0.8
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                isAlert = false
             }
         }
-        .padding()
-        .padding([.vertical])
-        .frame(width: 300)
-        .background(.white)
-        .clipShape(CustomRoundedCorners(topLeft: 8, topRight: 8, bottomLeft: 8, bottomRight: 8))
     }
 }
 

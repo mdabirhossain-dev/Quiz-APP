@@ -19,7 +19,7 @@ struct HomeView: View {
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
         
-        ZStack(alignment: .topLeading) {
+        ZStack(alignment: .center) {
             GradientView()
                 .edgesIgnoringSafeArea(.all)
             
