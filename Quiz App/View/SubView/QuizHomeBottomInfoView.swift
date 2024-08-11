@@ -50,7 +50,7 @@ struct QuizHomeBottomInfoView: View {
                     isAlert = true
                 }
             }
-            .buttonStyle(CustomRoundedButtonStyle(28))
+            .buttonStyle(CustomRoundedButtonStyle(height: 56, cornerRadius: 28))
             .padding(.vertical)
             
             Spacer()
@@ -59,7 +59,7 @@ struct QuizHomeBottomInfoView: View {
         .padding(.top)
         .foregroundColor(.black)
         .frame(height: screenHeight / 2)
-        .background(.white)
+        .background(Color.white)
         .clipShape(CustomRoundedCorners(topLeft: 30, topRight: 30))
     }
 }

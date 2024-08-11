@@ -53,13 +53,13 @@ struct PopUpAlertView: View {
                             removeAlert()
                             print("No button tapped from alert...")
                         }
-                        .buttonStyle(CustomRoundedButtonStyle(12, .dimRed))
+                        .buttonStyle(CustomRoundedButtonStyle(height: 48, cornerRadius: 12, backgroundColor: .dimRed))
                         
                         Button("Yes") {
                             yesAction()
                             print("Yes button tapped from alert...")
                         }
-                        .buttonStyle(CustomRoundedButtonStyle(12, .darkRed))
+                        .buttonStyle(CustomRoundedButtonStyle(height: 48, cornerRadius: 12, backgroundColor: .darkRed))
                     }
                 } else {
                     Button("Back to home") {
@@ -67,7 +67,7 @@ struct PopUpAlertView: View {
                         
                         print("'Back to home' button tapped from alert...")
                     }
-                    .buttonStyle(CustomRoundedButtonStyle(12, .darkRed))
+                    .buttonStyle(CustomRoundedButtonStyle(height: 48, cornerRadius: 12, backgroundColor: .darkRed))
                 }
             }
             .padding()

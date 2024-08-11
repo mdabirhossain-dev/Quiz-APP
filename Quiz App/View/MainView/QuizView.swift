@@ -73,7 +73,7 @@ struct QuizView: View {
                         }
                     }
                 }
-                .buttonStyle(CustomRoundedButtonStyle(28))
+                .buttonStyle(CustomRoundedButtonStyle(height: 56, cornerRadius: 28))
             }
             .padding(.horizontal)
             .frame(maxWidth: screenWidth - 20, maxHeight: .infinity)
