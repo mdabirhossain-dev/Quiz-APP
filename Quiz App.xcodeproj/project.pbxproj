@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		10053EFD2C68788E007D0770 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10053EFC2C68788E007D0770 /* QuizView.swift */; };
 		10053EFF2C68939C007D0770 /* TimerDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10053EFE2C68939C007D0770 /* TimerDurationView.swift */; };
+		10053F012C68C483007D0770 /* AnswerSelectionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10053F002C68C483007D0770 /* AnswerSelectionButtonStyle.swift */; };
 		103855112C6771A40053048F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855102C6771A40053048F /* GradientView.swift */; };
 		103855142C6773950053048F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855132C6773950053048F /* Color.swift */; };
 		103855182C67AC590053048F /* CustomNavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855172C67AC590053048F /* CustomNavBarModifier.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		10053EFC2C68788E007D0770 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		10053EFE2C68939C007D0770 /* TimerDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDurationView.swift; sourceTree = "<group>"; };
+		10053F002C68C483007D0770 /* AnswerSelectionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerSelectionButtonStyle.swift; sourceTree = "<group>"; };
 		103855102C6771A40053048F /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		103855132C6773950053048F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		103855172C67AC590053048F /* CustomNavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarModifier.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				103855172C67AC590053048F /* CustomNavBarModifier.swift */,
 				1038551C2C67DD200053048F /* CustomRoundedCorners.swift */,
 				1038551E2C67E0DB0053048F /* RoundedButtonStyle.swift */,
+				10053F002C68C483007D0770 /* AnswerSelectionButtonStyle.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				103855142C6773950053048F /* Color.swift in Sources */,
 				103855232C67EEC50053048F /* PopUpAlertView.swift in Sources */,
 				1038551D2C67DD200053048F /* CustomRoundedCorners.swift in Sources */,
+				10053F012C68C483007D0770 /* AnswerSelectionButtonStyle.swift in Sources */,
 				103855112C6771A40053048F /* GradientView.swift in Sources */,
 				106D9CB82C676F0C001FDF03 /* QuizViewModel.swift in Sources */,
 				103855272C67F1070053048F /* ImageAssets.swift in Sources */,

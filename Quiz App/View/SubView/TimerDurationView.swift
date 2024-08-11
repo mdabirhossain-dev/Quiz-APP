@@ -31,7 +31,7 @@ struct TimerDurationView: View {
                     RoundedRectangle(cornerRadius: 6.5)
                         .fill(Color.darkRed)
                         .frame(maxWidth: CGFloat(progressWidth))
-                        .frame(height: 13)//CGFloat(duration) * geo.size.width
+                        .frame(height: 13)
                 }
                 .onReceive(timer) { time in
                     print("geoo: \(geo.size.width)")
@@ -54,8 +54,34 @@ struct TimerDurationView: View {
     }
 }
 
-struct TimerDurationView_Previews: PreviewProvider {
+//struct TimerDurationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TimerDurationView()
+//    }
+//}
+
+
+struct AnswerSelectionCellView: View {
+    
+//    @Binding var questionOptions: Bool
+    
+    var selectedAnswer: Bool {
+        
+        return false
+    }
+    
+    var body: some View {
+        VStack {
+            Button("Question Title") {
+                
+            }
+            .buttonStyle(AnswerSelectionButtonStyle(selectedAnswer))
+        }
+    }
+}
+
+struct AnswerSelectionCellView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerDurationView()
+        AnswerSelectionCellView()//(questionOptions: .constant(false))
     }
 }
