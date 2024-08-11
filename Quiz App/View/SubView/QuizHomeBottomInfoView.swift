@@ -10,7 +10,7 @@
 
 import SwiftUI
 
-struct QuizBottomInfoView: View {
+struct QuizHomeBottomInfoView: View {
     
     @Binding var isAlert: Bool
     
@@ -66,7 +66,7 @@ struct QuizBottomInfoView: View {
 
 struct QuizBottomInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizBottomInfoView(isAlert: .constant(false))
+        QuizHomeBottomInfoView(isAlert: .constant(false))
     }
 }
 

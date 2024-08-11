@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10053EFD2C68788E007D0770 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10053EFC2C68788E007D0770 /* QuizView.swift */; };
 		103855112C6771A40053048F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855102C6771A40053048F /* GradientView.swift */; };
 		103855142C6773950053048F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855132C6773950053048F /* Color.swift */; };
 		103855182C67AC590053048F /* CustomNavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855172C67AC590053048F /* CustomNavBarModifier.swift */; };
-		1038551A2C67CB250053048F /* QuizBottomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855192C67CB250053048F /* QuizBottomInfoView.swift */; };
+		1038551A2C67CB250053048F /* QuizHomeBottomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855192C67CB250053048F /* QuizHomeBottomInfoView.swift */; };
 		1038551D2C67DD200053048F /* CustomRoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038551C2C67DD200053048F /* CustomRoundedCorners.swift */; };
 		1038551F2C67E0DB0053048F /* RoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038551E2C67E0DB0053048F /* RoundedButtonStyle.swift */; };
 		103855232C67EEC50053048F /* PopUpAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855222C67EEC50053048F /* PopUpAlertView.swift */; };
@@ -26,10 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10053EFC2C68788E007D0770 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		103855102C6771A40053048F /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		103855132C6773950053048F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		103855172C67AC590053048F /* CustomNavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarModifier.swift; sourceTree = "<group>"; };
-		103855192C67CB250053048F /* QuizBottomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBottomInfoView.swift; sourceTree = "<group>"; };
+		103855192C67CB250053048F /* QuizHomeBottomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHomeBottomInfoView.swift; sourceTree = "<group>"; };
 		1038551C2C67DD200053048F /* CustomRoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedCorners.swift; sourceTree = "<group>"; };
 		1038551E2C67E0DB0053048F /* RoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonStyle.swift; sourceTree = "<group>"; };
 		103855222C67EEC50053048F /* PopUpAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpAlertView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				106D9CB32C676EC4001FDF03 /* HomeView.swift */,
+				10053EFC2C68788E007D0770 /* QuizView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -68,7 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				103855102C6771A40053048F /* GradientView.swift */,
-				103855192C67CB250053048F /* QuizBottomInfoView.swift */,
+				103855192C67CB250053048F /* QuizHomeBottomInfoView.swift */,
 				103855222C67EEC50053048F /* PopUpAlertView.swift */,
 			);
 			path = SubView;
@@ -231,8 +234,9 @@
 			files = (
 				106D9CB62C676EDF001FDF03 /* QuizModel.swift in Sources */,
 				106D9CB42C676EC4001FDF03 /* HomeView.swift in Sources */,
+				10053EFD2C68788E007D0770 /* QuizView.swift in Sources */,
 				1038551F2C67E0DB0053048F /* RoundedButtonStyle.swift in Sources */,
-				1038551A2C67CB250053048F /* QuizBottomInfoView.swift in Sources */,
+				1038551A2C67CB250053048F /* QuizHomeBottomInfoView.swift in Sources */,
 				103855252C67EFC30053048F /* ImageAsset.swift in Sources */,
 				103855182C67AC590053048F /* CustomNavBarModifier.swift in Sources */,
 				103855292C67FC250053048F /* Collection.swift in Sources */,

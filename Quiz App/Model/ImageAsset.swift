@@ -22,3 +22,8 @@ enum AlertWarning: String {
     case warningSuccess = "Congratulations"
     case description = "Congratulations "
 }
+
+enum AlertType {
+    case otherAction
+    case quizFinished
+}

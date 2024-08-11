@@ -14,9 +14,10 @@ import SwiftUI
 struct Quiz_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationStack {
                 HomeView()
             }
+            .navigationViewStyle(.stack)
         }
     }
 }

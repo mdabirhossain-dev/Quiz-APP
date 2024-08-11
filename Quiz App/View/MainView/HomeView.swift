@@ -13,6 +13,7 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var isAlert = false
+    @State private var isNavigateToQuiz = false
     
     var body: some View {
         
@@ -65,17 +66,25 @@ struct HomeView: View {
                 }
                 .padding(.horizontal)
                 
-                QuizBottomInfoView(isAlert: $isAlert)
+                QuizHomeBottomInfoView(isAlert: $isAlert)
             }
             .foregroundColor(.white)
             
             if isAlert {
-                PopUpAlertView(isAlert: $isAlert, imageAsset: .warningShield, alertMsg: .warningShield, description: "")
+                PopUpAlertView(isAlert: $isAlert, alertType: AlertType.otherAction, imageAsset: .warningShield, alertMsg: .warningShield, description: "", yesAction: {
+                    isNavigateToQuiz = true
+                    isAlert = false
+                }, backToHomeAction: {
+                    
+                })
             }
         }
-        .customNavBar(isHome: true, isTrailing: true)
+        .customNavBar(isAlert: $isAlert, isHome: true, isTrailing: true)
         .navigationBarHidden(false)
         .navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: $isNavigateToQuiz) {
+            QuizView()
+        }
     }
 }
 

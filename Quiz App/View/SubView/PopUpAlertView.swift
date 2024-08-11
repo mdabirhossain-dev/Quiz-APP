@@ -13,9 +13,13 @@ import SwiftUI
 struct PopUpAlertView: View {
     
     @Binding var isAlert: Bool
+    let alertType: AlertType
     let imageAsset: ImageAsset
     let alertMsg: AlertWarning
     let description: String
+    
+    let yesAction: () -> Void
+    let backToHomeAction: () -> Void
     
     @State private var scaleEffect: CGFloat = 1.0
     
@@ -43,16 +47,25 @@ struct PopUpAlertView: View {
                         .font(.system(size: 14, weight: .regular))
                 }
                 
-                HStack {
-                    Button("No") {
-                        removeAlert()
-                    }
-                    .buttonStyle(CustomRoundedButtonStyle(12, .dimRed))
-                    
-                    Button("Yes") {
-                        withAnimation {
-                            isAlert = false
+                if alertType == .otherAction {
+                    HStack {
+                        Button("No") {
+                            removeAlert()
+                            print("No button tapped from alert...")
                         }
+                        .buttonStyle(CustomRoundedButtonStyle(12, .dimRed))
+                        
+                        Button("Yes") {
+                            yesAction()
+                            print("Yes button tapped from alert...")
+                        }
+                        .buttonStyle(CustomRoundedButtonStyle(12, .darkRed))
+                    }
+                } else {
+                    Button("Back to home") {
+                        backToHomeAction()
+                        
+                        print("'Back to home' button tapped from alert...")
                     }
                     .buttonStyle(CustomRoundedButtonStyle(12, .darkRed))
                 }
@@ -89,6 +102,10 @@ struct PopUpAlertView: View {
 
 struct PopUpAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        PopUpAlertView(isAlert: .constant(false), imageAsset: ImageAsset.warningBack, alertMsg: AlertWarning.warningBack, description: "defsdfa")
+        PopUpAlertView(isAlert: .constant(false), alertType: AlertType.otherAction, imageAsset: ImageAsset.warningBack, alertMsg: AlertWarning.warningBack, description: "defsdfa", yesAction: {
+            
+        }, backToHomeAction: {
+            
+        })
     }
 }
