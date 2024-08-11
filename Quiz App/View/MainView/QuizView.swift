@@ -9,6 +9,7 @@
 
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct QuizView: View {
     
@@ -18,6 +19,17 @@ struct QuizView: View {
     @State private var duration = 10
     
     @State private var isAlert = false
+    @State private var isFinished = false
+    
+    @State private var totalCoin = 0
+    @State private var totalCorrectAns = 0
+    var totalQuestion: Int {
+        return (quizViewModel.quizData?.questions?.count ?? 0) - 1
+    }
+    
+    @State private var alertType = AlertType.otherAction
+    @State private var imageAsset = ImageAsset.warningBack
+    @State private var alertMsg = AlertWarning.warningBack
     
     var body: some View {
         let screenWidth = UIScreen.main.bounds.width
@@ -28,13 +40,13 @@ struct QuizView: View {
             
             VStack(spacing: 16) {
                 HStack {
-                    Text("Question 2/20")
+                    Text("Question \(selectedIndex + 1)/\(totalQuestion)")
                         .foregroundColor(Color.darkRed)
                         .font(.system(size: 14, weight: .regular))
                     
                     Spacer()
                     
-                    Text("50").foregroundColor(Color.darkRed)
+                    Text("\(totalCoin)").foregroundColor(Color.darkRed)
                         .font(.system(size: 19, weight: .bold))
                     
                     Image("coins")
@@ -43,7 +55,7 @@ struct QuizView: View {
                 }
                 
                 if let url = quizViewModel.quizData?.questions?[selectedIndex].questionImageURL {
-                    AsyncImage(url: URL(string: url)) { image in
+                    WebImage(url: URL(string: url)) { image in
                         image
                             .resizable()
                             .frame(maxWidth: .infinity)
@@ -91,12 +103,16 @@ struct QuizView: View {
                 }
                 
                 Button("NEXT") {
-                    if selectedIndex < quizViewModel.quizData?.questions?.count ?? 0 {
+                    print("selectedIndex: \(selectedIndex) quizViewModel: \(quizViewModel.quizData?.questions?.count ?? 0)")
+                    if selectedIndex < (quizViewModel.quizData?.questions?.count ?? 0) - 1 {
                         withAnimation(.easeInOut(duration: 0.4)) {
                             selectedIndex += 1
                         }
                     } else {
-                        isAlert = true
+                        isFinished = true
+                        alertType = AlertType.quizFinished
+                        imageAsset = ImageAsset.warningSuccess
+                        alertMsg = AlertWarning.warningSuccess
                     }
                     duration = 10
                 }
@@ -111,6 +127,14 @@ struct QuizView: View {
             if isAlert {
                 PopUpAlertView(isAlert: $isAlert, alertType: AlertType.otherAction, imageAsset: .warningBack, alertMsg: .warningBack, description: "", yesAction: {
                     presentation.wrappedValue.dismiss()
+                }, backToHomeAction: {
+                    presentation.wrappedValue.dismiss()
+                })
+            }
+            
+            if isFinished {
+                PopUpAlertView(isAlert: $isAlert, alertType: AlertType.quizFinished, imageAsset: .warningSuccess, alertMsg: .warningSuccess, description: "You have complete your Quiz. Correct answer \(totalCorrectAns)/\(totalQuestion) and you earn ", yesAction: {
+                    
                 }, backToHomeAction: {
                     presentation.wrappedValue.dismiss()
                 })

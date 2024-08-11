@@ -21,6 +21,7 @@
 		103855252C67EFC30053048F /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855242C67EFC30053048F /* ImageAsset.swift */; };
 		103855272C67F1070053048F /* ImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855262C67F1070053048F /* ImageAssets.swift */; };
 		103855292C67FC250053048F /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103855282C67FC250053048F /* Collection.swift */; };
+		105198042C69556F00E9797B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 105198032C69556F00E9797B /* SDWebImageSwiftUI */; };
 		106D9CB42C676EC4001FDF03 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D9CB32C676EC4001FDF03 /* HomeView.swift */; };
 		106D9CB62C676EDF001FDF03 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D9CB52C676EDF001FDF03 /* QuizModel.swift */; };
 		106D9CB82C676F0C001FDF03 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D9CB72C676F0C001FDF03 /* QuizViewModel.swift */; };
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				105198042C69556F00E9797B /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +189,9 @@
 			dependencies = (
 			);
 			name = "Quiz App";
+			packageProductDependencies = (
+				105198032C69556F00E9797B /* SDWebImageSwiftUI */,
+			);
 			productName = "Quiz App";
 			productReference = 10DEA0992C6761C60079C9C4 /* Quiz App.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 10DEA0902C6761C60079C9C4;
+			packageReferences = (
+				105198022C69556F00E9797B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 10DEA09A2C6761C60079C9C4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -465,6 +473,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		105198022C69556F00E9797B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		105198032C69556F00E9797B /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 105198022C69556F00E9797B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 10DEA0912C6761C60079C9C4 /* Project object */;
 }

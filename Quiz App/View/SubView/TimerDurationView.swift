@@ -36,7 +36,6 @@ struct TimerDurationView: View {
                         .frame(height: 13)
                 }
                 .onReceive(timer) { time in
-                    print("geoo: \(geo.size.width)")
                     if duration <= 0 {
 //                        timer.upstream.connect().cancel()
                     } else {

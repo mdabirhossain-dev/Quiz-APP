@@ -25,10 +25,12 @@ struct PopUpAlertView: View {
     
     var body: some View {
         ZStack {
-            Color.black.opacity(0.05)
+            Color.black.opacity(0.3)
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
-                    removeAlert()
+                    if alertType != .quizFinished {
+                        removeAlert()
+                    }
                 }
             
             VStack(spacing: 16) {
@@ -41,10 +43,18 @@ struct PopUpAlertView: View {
                     .foregroundColor(.black)
                     .font(.system(size: 16, weight: .semibold))
                 
-                if description.isNotEmpty {
-                    Text(description)
-                        .foregroundColor(.black)
-                        .font(.system(size: 14, weight: .regular))
+                if alertType == .quizFinished {
+                    HStack {
+                        Text(description) +
+                        
+                        Text("**350**")
+                            .foregroundColor(.darkRed) +
+                        
+                        Text(" coin")
+                    }
+                    .foregroundColor(.black)
+                    .font(.system(size: 14, weight: .regular))
+                    .multilineTextAlignment(.center)
                 }
                 
                 if alertType == .otherAction {
