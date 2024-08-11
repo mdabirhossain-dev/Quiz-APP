@@ -24,51 +24,50 @@ struct HomeView: View {
             GradientView()
                 .edgesIgnoringSafeArea(.all)
             
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 16) {
-                    HStack(alignment: .bottom) {
-                        Image("sun")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 141, height: 141)
-                            .overlay {
-                                VStack {
-                                    Text("500")
-                                        .foregroundColor(.darkRed)
-                                        .font(.system(size: 32, weight: .bold))
-                                    
-                                    Text("High Score")
-                                        .foregroundColor(.black)
-                                        .font(.system(size: 13))
-                                }
+            VStack(alignment: .leading, spacing: 16) {
+                HStack(alignment: .bottom) {
+                    Image("sun")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 141, height: 141)
+                        .overlay {
+                            VStack {
+                                Text("500")
+                                    .foregroundColor(.darkRed)
+                                    .font(.system(size: 32, weight: .bold))
+                                
+                                Text("High Score")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 13))
                             }
-                        
-                        Spacer()
-                        
-                        Image("large_coins")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 186, height: 169)
-                            .padding(.trailing, -16)
-                            .padding(.bottom, 16)
-                    }
-                    .frame(height: screenHeight / 4.5)
-                    .padding([.horizontal, .top])
+                        }
                     
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("JRF Sundays's")
-                            .font(.system(size: 32, weight: .heavy))
-                        
-                        Text("Supper Quiz")
-                            .font(.system(size: 48, weight: .heavy))
-                        
-                        Text("Play Super Quiz & earn **500** coin")
-                            .font(.system(size: 13))
-                    }
-                    .padding(.horizontal)
+                    Spacer()
                     
-                    QuizHomeBottomInfoView(isAlert: $isAlert)
+                    Image("large_coins")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 186, height: 169)
+                        .padding(.trailing, -16)
+                        .padding(.bottom, 16)
                 }
+                .frame(height: screenHeight / 4.5)
+                .padding([.horizontal, .top])
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("JRF Sundays's")
+                        .font(.system(size: 32, weight: .heavy))
+                    
+                    Text("Supper Quiz")
+                        .font(.system(size: 48, weight: .heavy))
+                    
+                    Text("Play Super Quiz & earn **500** coin")
+                        .font(.system(size: 13))
+                }
+                .padding(.horizontal)
+                
+                QuizHomeBottomInfoView(isAlert: $isAlert)
+                    .background(Color.white.ignoresSafeArea(.all, edges: .bottom))
             }
             .foregroundColor(.white)
             
@@ -84,6 +83,8 @@ struct HomeView: View {
         .customNavBar(isAlert: $isAlert, isHome: true, isTrailing: true)
         .navigationBarHidden(false)
         .navigationBarBackButtonHidden(true)
+        .preferredColorScheme(.dark)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(isPresented: $isNavigateToQuiz) {
             QuizView()
                 .environmentObject(quizViewModel)

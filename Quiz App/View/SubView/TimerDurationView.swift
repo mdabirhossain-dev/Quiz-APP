@@ -9,12 +9,14 @@
 
 
 import SwiftUI
+import Combine
 
 struct TimerDurationView: View {
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var duration = 10
+    @Binding var duration: Int
     @State private var progressWidth = 0
+    @State var connectedTimer: Cancellable? = nil
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         GeometryReader { geo in
@@ -35,13 +37,19 @@ struct TimerDurationView: View {
                 }
                 .onReceive(timer) { time in
                     print("geoo: \(geo.size.width)")
-                    if duration == 0 {
-                        timer.upstream.connect().cancel()
+                    if duration <= 0 {
+//                        timer.upstream.connect().cancel()
                     } else {
                         duration -= 1
                         withAnimation(.linear(duration: 1)) {
                             progressWidth += Int(geo.size.width - 100) / 10
-                            print("The time is now \(time)")
+                        }
+                    }
+                }
+                .onChange(of: duration) { _ in
+                    if duration == 10 {
+                        withAnimation(.linear(duration: 0.1)) {
+                            self.progressWidth = 0
                         }
                     }
                 }
@@ -72,7 +80,7 @@ struct AnswerSelectionCellView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             Button(quizViewModel.quizData?.questions?[index].answers?.a ?? "") {
                 
             }

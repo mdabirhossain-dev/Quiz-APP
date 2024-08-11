@@ -15,6 +15,7 @@ struct QuizView: View {
     @Environment(\.presentationMode) var presentation
     @EnvironmentObject var quizViewModel: QuizViewModel
     @State private var selectedIndex = 0
+    @State private var duration = 10
     
     @State private var isAlert = false
     
@@ -51,16 +52,15 @@ struct QuizView: View {
                     .foregroundColor(Color.black)
                     .font(.system(size: 20, weight: .bold))
                 
-                TimerDurationView()
+                TimerDurationView(duration: $duration)
+                    .frame(height: 30)
                 
-                VStack(spacing: 16) {
-                    ForEach(0..<(quizViewModel.quizData?.questions?.count ?? 0), id: \.self) { index in
-                        if selectedIndex == index {
-                            AnswerSelectionCellView(index: index)
-                                .padding(.trailing)
-                                .transition(AnyTransition.customSlideAnimation)
-                                .environmentObject(quizViewModel)
-                        }
+                ForEach(0..<(quizViewModel.quizData?.questions?.count ?? 0), id: \.self) { index in
+                    if selectedIndex == index {
+                        AnswerSelectionCellView(index: index)
+                            .padding(.trailing)
+                            .transition(AnyTransition.customSlideAnimation)
+                            .environmentObject(quizViewModel)
                     }
                 }
                 
@@ -72,11 +72,13 @@ struct QuizView: View {
                             selectedIndex += 1
                         }
                     }
+                    duration = 10
                 }
                 .buttonStyle(CustomRoundedButtonStyle(height: 56, cornerRadius: 28))
+                .padding(.vertical, 10)
             }
-            .padding(.horizontal)
-            .frame(maxWidth: screenWidth - 20, maxHeight: .infinity)
+            .padding(.all)
+            .frame(maxWidth: screenWidth - 20, maxHeight: .infinity, alignment: .top)
             .background(Color.white)
             .clipShape(CustomRoundedCorners(topLeft: 20, topRight: 20, bottomLeft: 20, bottomRight: 20))
             
@@ -89,6 +91,9 @@ struct QuizView: View {
             }
         }
         .customNavBar(isAlert: $isAlert, isHome: false, isTrailing: false)
+        .navigationTitle("🕣 2:36")
+        .preferredColorScheme(.dark)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
