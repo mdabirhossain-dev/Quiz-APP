@@ -15,7 +15,6 @@ struct QuizModel: Codable {
 }
 
 struct Question: Codable {
-    
     let question: String?
     let answers: Answers?
     let questionImageURL: String?

@@ -42,19 +42,13 @@ struct QuizHomeBottomInfoView: View {
                 HStack {
                     if remainingDays > 0 {
                         TimerCellView(time: $remainingDays, timeType: "Days")
-                        
-                        Spacer()
                     }
                     
                     if remainingHours > 0 {
                         TimerCellView(time: $remainingHours, timeType: "Hours")
-                        
-                        Spacer()
                     }
                     
                     TimerCellView(time: $remainingMinutes, timeType: "Minutes")
-                    
-                    Spacer()
                     
                     TimerCellView(time: $remainingSeconds, timeType: "Seconds")
                 }

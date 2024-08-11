@@ -42,11 +42,37 @@ struct QuizView: View {
                         .frame(width: 30, height: 25)
                 }
                 
-                Image("thumb_image")
-                    .resizable()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: screenWidth / 2.2)
-                    .padding(.horizontal, 30)
+                if let url = quizViewModel.quizData?.questions?[selectedIndex].questionImageURL {
+                    AsyncImage(url: URL(string: url)) { image in
+                        image
+                            .resizable()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: screenWidth / 2.2)
+                            .cornerRadius(10)
+                            .padding(.horizontal, 30)
+                        
+                    } placeholder: {
+                        Image("no_image")
+                            .resizable()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: screenWidth / 2.2)
+                            .overlay (
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.darkRed, lineWidth: 1)
+                            )
+                            .padding(.horizontal, 30)
+                    }
+                } else {
+                    Image("no_image")
+                        .resizable()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: screenWidth / 2.2)
+                        .overlay (
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.darkRed, lineWidth: 1)
+                        )
+                        .padding(.horizontal, 30)
+                }
                 
                 Text("What is the name of this card in the JRF?")
                     .foregroundColor(Color.black)
@@ -65,12 +91,12 @@ struct QuizView: View {
                 }
                 
                 Button("NEXT") {
-                    if selectedIndex == quizViewModel.quizData?.questions?.count {
-                        isAlert = true
-                    } else {
+                    if selectedIndex < quizViewModel.quizData?.questions?.count ?? 0 {
                         withAnimation(.easeInOut(duration: 0.4)) {
                             selectedIndex += 1
                         }
+                    } else {
+                        isAlert = true
                     }
                     duration = 10
                 }
