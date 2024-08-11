@@ -44,7 +44,7 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    Image("coins")
+                    Image("large_coins")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 186, height: 169)

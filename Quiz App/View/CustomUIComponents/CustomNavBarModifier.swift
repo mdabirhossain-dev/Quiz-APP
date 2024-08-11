@@ -66,7 +66,6 @@ struct CustomNavBarModifier: ViewModifier {
                                 .padding(.leading, 14)
                             }
                         }
-
                     }
                 }
             }

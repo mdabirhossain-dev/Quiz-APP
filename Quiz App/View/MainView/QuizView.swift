@@ -16,17 +16,44 @@ struct QuizView: View {
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
-        let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
         
         ZStack(alignment: .center) {
             GradientView()
                 .edgesIgnoringSafeArea(.all)
             
-            VStack {
+            VStack(spacing: 16) {
+                HStack {
+                    Text("Question 2/20")
+                        .foregroundColor(Color.darkRed)
+                        .font(.system(size: 14, weight: .regular))
+                    
+                    Spacer()
+                    
+                    Text("50").foregroundColor(Color.darkRed)
+                        .font(.system(size: 19, weight: .bold))
+                    
+                    Image("coins")
+                        .resizable()
+                        .frame(width: 30, height: 25)
+                }
                 
+                Image("thumb_image")
+                    .resizable()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: screenWidth / 2.2)
+                    .padding(.horizontal, 30)
+                
+                Text("What is the name of this card in the JRF?")
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 20, weight: .bold))
+                
+                GeometryReader { geo in
+                    TimerDurationView()
+                }
             }
-            .frame(maxWidth: screenWidth - 16, maxHeight: .infinity)
+            .padding(.horizontal)
+            .frame(maxWidth: screenWidth - 20, maxHeight: .infinity)
             .background(Color.white)
             .clipShape(CustomRoundedCorners(topLeft: 20, topRight: 20, bottomLeft: 20, bottomRight: 20))
             
