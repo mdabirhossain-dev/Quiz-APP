@@ -15,7 +15,7 @@ struct Quiz_AppApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                AnswerSelectionCellView()
+                HomeView()
             }
             .navigationViewStyle(.stack)
         }

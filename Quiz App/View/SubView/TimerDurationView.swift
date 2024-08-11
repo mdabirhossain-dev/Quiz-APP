@@ -75,7 +75,22 @@ struct AnswerSelectionCellView: View {
             Button("Question Title") {
                 
             }
-            .buttonStyle(AnswerSelectionButtonStyle(selectedAnswer))
+            .buttonStyle(AnswerSelectionButtonStyle(false))
+            
+            Button("Question Title") {
+                
+            }
+            .buttonStyle(AnswerSelectionButtonStyle(true))
+            
+            Button("Question Title") {
+                
+            }
+            .buttonStyle(AnswerSelectionButtonStyle(nil))
+            
+            Button("Question Title") {
+                
+            }
+            .buttonStyle(AnswerSelectionButtonStyle(nil))
         }
     }
 }

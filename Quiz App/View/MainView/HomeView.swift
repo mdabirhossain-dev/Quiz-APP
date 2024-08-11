@@ -12,6 +12,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @StateObject var quizViewModel = QuizViewModel()
     @State private var isAlert = false
     @State private var isNavigateToQuiz = false
     
@@ -85,6 +86,9 @@ struct HomeView: View {
         .navigationDestination(isPresented: $isNavigateToQuiz) {
             QuizView()
         }
+        .onAppear(perform: {
+            quizViewModel.getQuizData()
+        })
     }
 }
 
