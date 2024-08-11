@@ -12,8 +12,11 @@ import SwiftUI
 
 struct QuizView: View {
     
-    @State private var isAlert = false
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var quizViewModel: QuizViewModel
+    @State private var selectedIndex = 0
+    
+    @State private var isAlert = false
     
     var body: some View {
         let screenWidth = UIScreen.main.bounds.width
@@ -48,9 +51,29 @@ struct QuizView: View {
                     .foregroundColor(Color.black)
                     .font(.system(size: 20, weight: .bold))
                 
-                GeometryReader { geo in
-                    TimerDurationView()
+                TimerDurationView()
+                
+                VStack(spacing: 16) {
+                    ForEach(0..<(quizViewModel.quizData?.questions?.count ?? 0), id: \.self) { index in
+                        if selectedIndex == index {
+                            AnswerSelectionCellView(index: index)
+                                .padding(.trailing)
+                                .transition(AnyTransition.customSlideAnimation)
+                                .environmentObject(quizViewModel)
+                        }
+                    }
                 }
+                
+                Button("NEXT") {
+                    if selectedIndex == quizViewModel.quizData?.questions?.count {
+                        isAlert = true
+                    } else {
+                        withAnimation(.easeInOut(duration: 0.4)) {
+                            selectedIndex += 1
+                        }
+                    }
+                }
+                .buttonStyle(CustomRoundedButtonStyle(28))
             }
             .padding(.horizontal)
             .frame(maxWidth: screenWidth - 20, maxHeight: .infinity)

@@ -19,7 +19,6 @@ struct HomeView: View {
     var body: some View {
         
         let screenHeight = UIScreen.main.bounds.height
-        let screenWidth = UIScreen.main.bounds.width
         
         ZStack(alignment: .center) {
             GradientView()
@@ -85,6 +84,7 @@ struct HomeView: View {
         .navigationBarBackButtonHidden(true)
         .navigationDestination(isPresented: $isNavigateToQuiz) {
             QuizView()
+                .environmentObject(quizViewModel)
         }
         .onAppear(perform: {
             quizViewModel.getQuizData()

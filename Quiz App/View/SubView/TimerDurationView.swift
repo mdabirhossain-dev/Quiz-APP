@@ -63,31 +63,32 @@ struct TimerDurationView: View {
 
 struct AnswerSelectionCellView: View {
     
-//    @Binding var questionOptions: Bool
+    @EnvironmentObject var quizViewModel: QuizViewModel
+//    @Binding var question: Question
+    let index: Int
     
     var selectedAnswer: Bool {
-        
         return false
     }
     
     var body: some View {
         VStack {
-            Button("Question Title") {
+            Button(quizViewModel.quizData?.questions?[index].answers?.a ?? "") {
                 
             }
             .buttonStyle(AnswerSelectionButtonStyle(false))
             
-            Button("Question Title") {
+            Button(quizViewModel.quizData?.questions?[index].answers?.b ?? "") {
                 
             }
             .buttonStyle(AnswerSelectionButtonStyle(true))
             
-            Button("Question Title") {
+            Button(quizViewModel.quizData?.questions?[index].answers?.c ?? "") {
                 
             }
             .buttonStyle(AnswerSelectionButtonStyle(nil))
             
-            Button("Question Title") {
+            Button(quizViewModel.quizData?.questions?[index].answers?.d ?? "") {
                 
             }
             .buttonStyle(AnswerSelectionButtonStyle(nil))
@@ -97,6 +98,6 @@ struct AnswerSelectionCellView: View {
 
 struct AnswerSelectionCellView_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerSelectionCellView()//(questionOptions: .constant(false))
+        AnswerSelectionCellView(index: 0)
     }
 }
