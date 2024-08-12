@@ -82,9 +82,13 @@ struct QuizView: View {
                         .padding(.horizontal, 30)
                 }
                 
-                Text("What is the name of this card in the JRF?")
+                Text(quizViewModel.quizData?.questions?[quizViewModel.selectedIndex].question ?? "")
                     .foregroundColor(Color.black)
                     .font(.system(size: 20, weight: .bold))
+                    .multilineTextAlignment(.leading)
+                    .frame(height: 58)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .minimumScaleFactor(0.6)
                 
                 TimerDurationView(duration: $quizViewModel.duration)
                     .frame(height: 30)

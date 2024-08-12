@@ -19,6 +19,7 @@ struct QuizHomeBottomInfoView: View {
         
         VStack(alignment: .leading, spacing: 16) {
             Text("Today's Quiz on")
+                .foregroundColor(.gray)
                 .font(.system(size: 13))
             
             Text("General Knowledge")
@@ -26,6 +27,7 @@ struct QuizHomeBottomInfoView: View {
                 .font(.system(size: 20, weight: .heavy))
             
             Text("The Quiz ends in")
+                .foregroundColor(.gray)
                 .font(.system(size: 13))
             
             HStack(alignment: .center) {
@@ -84,7 +86,7 @@ struct TimerCellView: View {
                 .font(.system(size: 13))
         }
         .padding(.horizontal, 3)
-        .frame(height: 50)
+        .frame(height: 57)
         .frame(maxWidth: .infinity)
         .overlay(
             RoundedRectangle(cornerRadius: 4)

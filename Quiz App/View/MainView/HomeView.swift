@@ -16,6 +16,8 @@ struct HomeView: View {
     @State private var isAlert = false
     @State private var isNavigateToQuiz = false
     
+    @AppStorage("HighScore") var highScore: Int = 0
+    
     var body: some View {
         
         let screenHeight = UIScreen.main.bounds.height
@@ -32,7 +34,7 @@ struct HomeView: View {
                         .frame(width: 141, height: 141)
                         .overlay {
                             VStack {
-                                Text("500")
+                                Text("\(highScore)")
                                     .foregroundColor(.darkRed)
                                     .font(.system(size: 32, weight: .bold))
                                 

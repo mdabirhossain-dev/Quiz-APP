@@ -130,7 +130,6 @@ struct AnswerSelectionCellView: View {
             }
         } else {
             value = "w"
-            print("Value6: \(value)")
         }
         
         return value

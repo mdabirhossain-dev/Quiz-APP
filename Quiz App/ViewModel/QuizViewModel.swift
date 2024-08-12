@@ -109,8 +109,10 @@ class QuizViewModel: ObservableObject {
     }
     
     func saveHighScore() {
-            let defaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
+        if defaults.integer(forKey: "HighScore") < totalCoin {
             defaults.set(totalCoin, forKey: "HighScore")
+        }
     }
     
     func resetValues() {

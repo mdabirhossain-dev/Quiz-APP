@@ -43,6 +43,7 @@ struct PopUpAlertView: View {
                 Text(alertMsg.rawValue)
                     .foregroundColor(.black)
                     .font(.system(size: 16, weight: .semibold))
+                    .multilineTextAlignment(.center)
                 
                 if alertType == .quizFinished {
                     HStack {
