@@ -21,7 +21,7 @@ struct PopUpAlertView: View {
     let yesAction: () -> Void
     let backToHomeAction: () -> Void
     
-    @State private var scaleEffect: CGFloat = 1.0
+    @State private var scaleEffect: CGFloat = 0.8
     
     var body: some View {
         ZStack {
@@ -82,19 +82,17 @@ struct PopUpAlertView: View {
             }
             .padding()
             .padding(.vertical, 6)
-            .frame(width: 280)
+            .frame(width: 300)
             .background(.white)
             .clipShape(CustomRoundedCorners(topLeft: 8, topRight: 8, bottomLeft: 8, bottomRight: 8))
             .scaleEffect(scaleEffect)
             .onAppear(perform: {
                 withAnimation {
-                    scaleEffect = 1.2
+                    scaleEffect = 1
                 }
             })
             .onDisappear(perform: {
-                withAnimation {
-                    scaleEffect = 0.8
-                }
+                removeAlert()
             })
         }
     }

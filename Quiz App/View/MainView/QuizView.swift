@@ -24,7 +24,7 @@ struct QuizView: View {
     @State private var totalCoin = 0
     @State private var totalCorrectAns = 0
     var totalQuestion: Int {
-        return (quizViewModel.quizData?.questions?.count ?? 0) - 1
+        return (quizViewModel.quizData?.questions?.count ?? 0)
     }
     
     @State private var alertType = AlertType.otherAction
