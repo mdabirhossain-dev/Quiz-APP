@@ -71,7 +71,7 @@ struct QuizHomeBottomInfoView: View {
         .foregroundColor(.black)
 //        .frame(height: screenHeight / 2)
         .background(Color.white)
-        .clipShape(CustomRoundedCorners(topLeft: 30, topRight: 30))
+//        .clipShape(CustomRoundedCorners(topLeft: 30, topRight: 30))
         .onAppear(perform: {
             startTimer()
         })
