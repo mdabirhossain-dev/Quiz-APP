@@ -15,14 +15,14 @@ struct QuizView: View {
     
     @Environment(\.presentationMode) var presentation
     @EnvironmentObject var quizViewModel: QuizViewModel
-    @State private var selectedIndex = 0
-    @State private var duration = 10
+//    @State private var selectedIndex = 0
+//    @State private var duration = 10
     
     @State private var isAlert = false
     @State private var isFinished = false
     
-    @State private var totalCoin = 0
-    @State private var totalCorrectAns = 0
+//    @State private var totalCoin = 0
+//    @State private var totalCorrectAns = 0
     var totalQuestion: Int {
         return (quizViewModel.quizData?.questions?.count ?? 0)
     }
@@ -40,13 +40,13 @@ struct QuizView: View {
             
             VStack(spacing: 16) {
                 HStack {
-                    Text("Question \(selectedIndex + 1)/\(totalQuestion)")
+                    Text("Question \(quizViewModel.selectedIndex + 1)/\(totalQuestion)")
                         .foregroundColor(Color.darkRed)
                         .font(.system(size: 14, weight: .regular))
                     
                     Spacer()
                     
-                    Text("\(totalCoin)").foregroundColor(Color.darkRed)
+                    Text("\(quizViewModel.totalCoin)").foregroundColor(Color.darkRed)
                         .font(.system(size: 19, weight: .bold))
                     
                     Image("coins")
@@ -54,7 +54,7 @@ struct QuizView: View {
                         .frame(width: 30, height: 25)
                 }
                 
-                if let url = quizViewModel.quizData?.questions?[selectedIndex].questionImageURL {
+                if let url = quizViewModel.quizData?.questions?[quizViewModel.selectedIndex].questionImageURL {
                     WebImage(url: URL(string: url)) { image in
                         image
                             .resizable()
@@ -90,11 +90,11 @@ struct QuizView: View {
                     .foregroundColor(Color.black)
                     .font(.system(size: 20, weight: .bold))
                 
-                TimerDurationView(duration: $duration)
+                TimerDurationView(duration: $quizViewModel.duration)
                     .frame(height: 30)
                 
                 ForEach(0..<(quizViewModel.quizData?.questions?.count ?? 0), id: \.self) { index in
-                    if selectedIndex == index {
+                    if quizViewModel.selectedIndex == index {
                         AnswerSelectionCellView(index: index)
                             .padding(.trailing)
                             .transition(AnyTransition.customSlideAnimation)
@@ -103,10 +103,10 @@ struct QuizView: View {
                 }
                 
                 Button("NEXT") {
-                    print("selectedIndex: \(selectedIndex) quizViewModel: \(quizViewModel.quizData?.questions?.count ?? 0)")
-                    if selectedIndex < (quizViewModel.quizData?.questions?.count ?? 0) - 1 {
+                    print("selectedIndex: \(quizViewModel.selectedIndex) quizViewModel: \(quizViewModel.quizData?.questions?.count ?? 0)")
+                    if quizViewModel.selectedIndex < (quizViewModel.quizData?.questions?.count ?? 0) - 1 {
                         withAnimation(.easeInOut(duration: 0.4)) {
-                            selectedIndex += 1
+                            quizViewModel.selectedIndex += 1
                         }
                     } else {
                         isFinished = true
@@ -114,7 +114,7 @@ struct QuizView: View {
                         imageAsset = ImageAsset.warningSuccess
                         alertMsg = AlertWarning.warningSuccess
                     }
-                    duration = 10
+                    quizViewModel.duration = 10
                 }
                 .buttonStyle(CustomRoundedButtonStyle(height: 56, cornerRadius: 28))
                 .padding(.vertical, 10)
@@ -133,7 +133,7 @@ struct QuizView: View {
             }
             
             if isFinished {
-                PopUpAlertView(isAlert: $isAlert, alertType: AlertType.quizFinished, imageAsset: .warningSuccess, alertMsg: .warningSuccess, description: "You have complete your Quiz. Correct answer \(totalCorrectAns)/\(totalQuestion) and you earn ", yesAction: {
+                PopUpAlertView(isAlert: $isAlert, alertType: AlertType.quizFinished, imageAsset: .warningSuccess, alertMsg: .warningSuccess, description: "You have complete your Quiz. Correct answer \(quizViewModel.totalCorrectAns)/\(totalQuestion) and you earn ", yesAction: {
                     
                 }, backToHomeAction: {
                     presentation.wrappedValue.dismiss()

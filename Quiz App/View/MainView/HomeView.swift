@@ -68,6 +68,7 @@ struct HomeView: View {
                 
                 QuizHomeBottomInfoView(isAlert: $isAlert)
                     .background(Color.white.ignoresSafeArea(.all, edges: .bottom))
+                    .environmentObject(quizViewModel)
             }
             .foregroundColor(.white)
             

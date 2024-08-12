@@ -15,6 +15,22 @@ class QuizViewModel: ObservableObject {
     
     @Published var quizData: QuizModel? = nil
     
+    // Timer/Duration
+    @Published var timer: Timer?
+    @Published var endDate = "15-08-2024"
+    @Published var remainingTime = "Enter an end date"
+    @Published var remainingDays = 0
+    @Published var remainingHours = 0
+    @Published var remainingMinutes = 0
+    @Published var remainingSeconds = 0
+    
+    // Quiz
+    @Published var selectedIndex = 0
+    @Published var duration = 10
+    
+    @Published var totalCoin = 0
+    @Published var totalCorrectAns = 0
+    
     func getQuizData() {
         let mainUrl = "https://herosapp.nyc3.digitaloceanspaces.com/quiz.json"
         guard let url = URL(string: mainUrl) else { return }
@@ -28,5 +44,56 @@ class QuizViewModel: ObservableObject {
             }
         }
         .resume()
+    }
+    
+    func startTimer() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        
+        if let endDate = formatter.date(from: self.endDate) {
+            let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                let currentDate = Date()
+                
+                let calendar = Calendar.current
+                let difference = calendar.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: endDate)
+                
+                if difference.day! > 0 {
+                    self.remainingDays = difference.day!
+                    self.remainingHours = difference.hour!
+                    self.remainingMinutes = difference.minute!
+                    self.remainingSeconds = difference.second!
+                    
+                    self.remainingTime = "\(difference.day!) d  \(difference.hour!) h \(difference.minute!) m \(difference.second!) s"
+                } else if difference.hour! > 0 {
+                    self.remainingHours = difference.hour!
+                    self.remainingMinutes = difference.minute!
+                    self.remainingSeconds = difference.second!
+                    
+                    self.remainingTime = "\(difference.hour!) h  \(difference.minute!) m \(difference.second!) s"
+                } else if difference.minute! > 0 {
+                    self.remainingMinutes = difference.minute!
+                    self.remainingSeconds = difference.second!
+                    
+                    self.remainingTime = "\(difference.minute!) m \(difference.second!) s"
+                } else {
+                    self.remainingSeconds = difference.second!
+                    
+                    self.remainingTime = "\(difference.second!) s"
+                }
+                
+                if currentDate >= endDate {
+                    self.stopTimer()
+                }
+            }
+            
+            self.timer = timer
+        } else {
+            self.remainingTime = "Invalid date format"
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 }
