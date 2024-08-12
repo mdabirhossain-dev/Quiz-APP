@@ -39,20 +39,16 @@ struct QuizHomeBottomInfoView: View {
             Text("The Quiz ends in")
                 .font(.system(size: 13))
             
-            VStack(alignment: .center) {
-                HStack {
-                    if quizViewModel.remainingDays > 0 {
-                        TimerCellView(time: $quizViewModel.remainingDays, timeType: "Days")
-                    }
-                    
-                    if quizViewModel.remainingHours > 0 {
-                        TimerCellView(time: $quizViewModel.remainingHours, timeType: "Hours")
-                    }
-                    
-                    TimerCellView(time: $quizViewModel.remainingMinutes, timeType: "Minutes")
-                    
-                    TimerCellView(time: $quizViewModel.remainingSeconds, timeType: "Seconds")
+            HStack(alignment: .center) {
+                if quizViewModel.remainingDays > 0 {
+                    TimerCellView(time: $quizViewModel.remainingDays, timeType: "Days")
                 }
+                
+                TimerCellView(time: $quizViewModel.remainingHours, timeType: "Hours")
+                
+                TimerCellView(time: $quizViewModel.remainingMinutes, timeType: "Minutes")
+                
+                TimerCellView(time: $quizViewModel.remainingSeconds, timeType: "Seconds")
             }
             .frame(maxWidth: .infinity)
             .padding(.top, -8)
