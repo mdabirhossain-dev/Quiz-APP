@@ -10,6 +10,7 @@
 
 import Foundation
 
+// MARK: - For PopUp reusability and efficiency
 enum ImageAsset: String {
     case warningShield = "warning_shield"
     case warningBack = "warning_back"

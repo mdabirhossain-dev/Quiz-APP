@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - Reusable background Gradient
 struct GradientView: View {
     var body: some View {
         LinearGradient(gradient: Gradient(colors: [.gradientRed, .gradientOrange]), startPoint: .top, endPoint: .bottom)

@@ -11,6 +11,7 @@
 import SwiftUI
 import Combine
 
+// MARK: - Custom timer duration progress bar using Combine framework
 struct TimerDurationView: View {
     
     @Binding var duration: Int
@@ -25,6 +26,7 @@ struct TimerDurationView: View {
                     .foregroundColor(Color.black)
                     .font(.system(size: 14, weight: .regular))
                 
+                /// Progress Bar
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 6.5)
                         .fill(Color.gray.opacity(0.5))
@@ -73,6 +75,7 @@ struct TimerDurationView_Previews: PreviewProvider {
 }
 
 
+// MARK: - Question selection option cell
 struct AnswerSelectionCellView: View {
     
     @EnvironmentObject var quizViewModel: QuizViewModel
@@ -106,6 +109,7 @@ struct AnswerSelectionCellView: View {
         .disabled(selectedAnswer.isNotEmpty || quizViewModel.duration <= 0)
     }
     
+    /// Check and match conditions selected option for button color recognition
     func outputForButton(ans: String) -> String {
         let answer = quizViewModel.quizData?.questions?[index].correctAnswer
         var value = ""
@@ -135,6 +139,7 @@ struct AnswerSelectionCellView: View {
         return value
     }
     
+    /// Check selected answer
     func checkAnswer(ans: String) {
         selectedAnswer = ans
         if selectedAnswer == quizViewModel.quizData?.questions?[index].correctAnswer {

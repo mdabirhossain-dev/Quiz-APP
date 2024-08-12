@@ -10,12 +10,14 @@
 
 import SwiftUI
 
+// MARK: - Home View
 struct HomeView: View {
     
     @StateObject var quizViewModel = QuizViewModel()
     @State private var isAlert = false
     @State private var isNavigateToQuiz = false
     
+    // MARK: - Saved score
     @AppStorage("HighScore") var highScore: Int = 0
     
     var body: some View {
@@ -28,6 +30,7 @@ struct HomeView: View {
             
             VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .bottom) {
+                    // MARK: - High Score
                     Image("sun")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -68,6 +71,7 @@ struct HomeView: View {
                 }
                 .padding(.horizontal)
                 
+                // MARK: - Bottom portion
                 QuizHomeBottomInfoView(isAlert: $isAlert)
                     .background(
                         Color.white

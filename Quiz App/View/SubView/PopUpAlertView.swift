@@ -10,6 +10,7 @@
 
 import SwiftUI
 
+// MARK: - Custom reusable PopUp with Animation
 struct PopUpAlertView: View {
     
     @EnvironmentObject var quizViewModel: QuizViewModel
@@ -59,6 +60,7 @@ struct PopUpAlertView: View {
                     .multilineTextAlignment(.center)
                 }
                 
+                /// Action Buttons
                 if alertType == .otherAction {
                     HStack {
                         Button("No") {
@@ -99,6 +101,7 @@ struct PopUpAlertView: View {
         }
     }
     
+    /// Remove PopUp with animation
     func removeAlert() {
         withAnimation {
             scaleEffect = 0.8

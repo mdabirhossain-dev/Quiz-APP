@@ -10,7 +10,7 @@
 
 import Foundation
 
-
+// MARK: - View Model
 class QuizViewModel: ObservableObject {
     
     @Published var quizData: QuizModel? = nil
@@ -33,6 +33,7 @@ class QuizViewModel: ObservableObject {
     
     @Published var isNextButtonDisabled = false
     
+    /// Fetching questions from API
     func getQuizData() {
         let mainUrl = "https://herosapp.nyc3.digitaloceanspaces.com/quiz.json"
         guard let url = URL(string: mainUrl) else { return }
@@ -48,6 +49,7 @@ class QuizViewModel: ObservableObject {
         .resume()
     }
     
+    /// Timer for Quiz end time
     func startTimer() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
@@ -94,11 +96,13 @@ class QuizViewModel: ObservableObject {
         }
     }
     
+    /// Quiz timer will stop when coundown will be finished or reached desired date
     func stopTimer() {
         timer?.invalidate()
         timer = nil
     }
     
+    /// Quiz next button action to reset the countdown and to make NEXT button disabile for 2 seconds
     func nextButtonAction() {
         duration = 10
         isNextButtonDisabled = true
@@ -108,13 +112,16 @@ class QuizViewModel: ObservableObject {
          }
     }
     
+    /// Saving HighScore only if new score is greater than previously saved value
     func saveHighScore() {
         let defaults = UserDefaults.standard
+        
         if defaults.integer(forKey: "HighScore") < totalCoin {
             defaults.set(totalCoin, forKey: "HighScore")
         }
     }
     
+    /// Previous all the progress will reset when starting the Quiz from the begining
     func resetValues() {
         selectedIndex = 0
         duration = 10

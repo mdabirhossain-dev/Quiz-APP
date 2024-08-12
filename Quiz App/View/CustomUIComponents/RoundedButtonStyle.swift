@@ -10,6 +10,7 @@
 
 import SwiftUI
 
+// MARK: - Red rounded ButtonStyle for reusability
 struct CustomRoundedButtonStyle: ButtonStyle {
     
     let height: CGFloat

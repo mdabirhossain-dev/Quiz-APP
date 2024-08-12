@@ -10,6 +10,7 @@
 
 import SwiftUI
 
+// MARK: - Customised corner radious Shape for reusability
 struct CustomRoundedCorners: Shape {
     var topLeft: CGFloat = 0.0
     var topRight: CGFloat = 0.0

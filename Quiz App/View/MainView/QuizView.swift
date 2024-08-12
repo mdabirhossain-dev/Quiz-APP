@@ -11,6 +11,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+// MARK: - Quiz View
 struct QuizView: View {
     
     @Environment(\.presentationMode) var presentation
@@ -50,6 +51,9 @@ struct QuizView: View {
                         .frame(width: 30, height: 25)
                 }
                 
+                // MARK: - Image
+                /// Image loading and caching using SDWebImage as Swift package
+                /// Default "No Image" placeholder if no image is found
                 if let url = quizViewModel.quizData?.questions?[quizViewModel.selectedIndex].questionImageURL {
                     WebImage(url: URL(string: url)) { image in
                         image
@@ -82,6 +86,7 @@ struct QuizView: View {
                         .padding(.horizontal, 30)
                 }
                 
+                // MARK: -  Question
                 Text(quizViewModel.quizData?.questions?[quizViewModel.selectedIndex].question ?? "")
                     .foregroundColor(Color.black)
                     .font(.system(size: 20, weight: .bold))
@@ -90,9 +95,11 @@ struct QuizView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .minimumScaleFactor(0.6)
                 
+                // MARK: -  Timer duration progress bar
                 TimerDurationView(duration: $quizViewModel.duration)
                     .frame(height: 30)
                 
+                // MARK: -  Question selection
                 ForEach(0..<(quizViewModel.quizData?.questions?.count ?? 0), id: \.self) { index in
                     if quizViewModel.selectedIndex == index {
                         AnswerSelectionCellView(index: index)
@@ -102,6 +109,7 @@ struct QuizView: View {
                     }
                 }
                 
+                // MARK: - Next Button
                 Button("NEXT") {
                     print("selectedIndex: \(quizViewModel.selectedIndex) quizViewModel: \(quizViewModel.quizData?.questions?.count ?? 0)")
                     if quizViewModel.selectedIndex < (quizViewModel.quizData?.questions?.count ?? 0) - 1 {

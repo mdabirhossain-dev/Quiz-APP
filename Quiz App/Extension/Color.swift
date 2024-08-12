@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: Color extension for reusability
 extension Color {
     static let gradientRed = Color(red: 190/255, green: 30/255, blue: 45/255)
     static let gradientOrange = Color(red: 229/255, green: 100/255, blue: 20/255)

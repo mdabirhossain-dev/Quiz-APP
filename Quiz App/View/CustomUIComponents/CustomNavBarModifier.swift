@@ -10,7 +10,7 @@
 
 import SwiftUI
 
-
+// MARK: - Reusabile custom Nav Bar
 struct CustomNavBarModifier: ViewModifier {
     
     @Binding var isAlert: Bool
@@ -21,7 +21,7 @@ struct CustomNavBarModifier: ViewModifier {
     func body(content: Content) -> some View {
         return content
             .toolbar {
-                
+                ///  Left contents
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     if isHome {
                         Button {
@@ -43,6 +43,7 @@ struct CustomNavBarModifier: ViewModifier {
                     }
                 }
                 
+                /// Right contents
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     if isTrailing {
                         Button {

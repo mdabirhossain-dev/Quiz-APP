@@ -10,6 +10,7 @@
 
 import Foundation
 
+// MARK: - To check collection items are not empty in a less time consuming manner
 extension Collection {
     var isNotEmpty: Bool {
         isEmpty == false

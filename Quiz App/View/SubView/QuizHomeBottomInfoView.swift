@@ -10,6 +10,7 @@
 
 import SwiftUI
 
+// MARK: - Bottom portion of Home
 struct QuizHomeBottomInfoView: View {
     
     @EnvironmentObject var quizViewModel: QuizViewModel
@@ -30,6 +31,7 @@ struct QuizHomeBottomInfoView: View {
                 .foregroundColor(.gray)
                 .font(.system(size: 13))
             
+            /// Days/Hours/Minutes/Seconds cells
             HStack(alignment: .center) {
                 if quizViewModel.remainingDays > 0 {
                     TimerCellView(time: $quizViewModel.remainingDays, timeType: "Days")
@@ -70,6 +72,7 @@ struct QuizBottomInfoView_Previews: PreviewProvider {
 }
 
 
+// MARK: - Reusable time cell for Home (Days/Hours/Minutes/Seconds)
 struct TimerCellView: View {
     
     @Binding var time: Int
