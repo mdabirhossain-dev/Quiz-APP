@@ -18,7 +18,7 @@ class QuizViewModel: ObservableObject {
     
     // Timer/Duration
     @Published var timer: Timer?
-    @Published var endDate = "15-08-2024"
+    @Published var endDate = "15-08-2024 23:59" // "15-08-2024"
     @Published var remainingTime = "Enter an end date"
     @Published var remainingDays = 0
     @Published var remainingHours = 0
@@ -61,7 +61,7 @@ class QuizViewModel: ObservableObject {
     /// Timer for Quiz end time
     func startTimer() {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.dateFormat = "dd-MM-yyyy HH:mm" // "dd-MM-yyyy"
         
         if let endDate = formatter.date(from: self.endDate) {
             let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
