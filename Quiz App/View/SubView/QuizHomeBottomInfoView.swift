@@ -81,8 +81,11 @@ struct TimerCellView: View {
     var body: some View {
         VStack(alignment: .center) {
             Text("\(time)")
+                .monospacedDigit()
                 .foregroundColor(.black)
                 .font(.system(size: 20, weight: .heavy))
+                .contentTransition(.numericText())
+                .animation(.linear, value: time)
             
             Text(timeType)
                 .foregroundColor(.gray)
