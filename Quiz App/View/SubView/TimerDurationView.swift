@@ -36,19 +36,20 @@ struct TimerDurationView: View {
                         .frame(height: 13)
                 }
                 .onReceive(timer) { time in
-                    if duration <= 0 {
+                    if duration == 0 {
 //                        timer.upstream.connect().cancel()
+//                        progressWidth = geo.size.width - 100
                     } else {
                         duration -= 1
                         withAnimation(.linear(duration: 1)) {
-                            progressWidth += CGFloat(geo.size.width - 100) / CGFloat(10)
+                            progressWidth -= CGFloat(geo.size.width - 100) / CGFloat(10)
                         }
                     }
                 }
                 .onChange(of: duration) { _ in
                     if duration == 10 {
                         withAnimation(.linear(duration: 0.1)) {
-                            self.progressWidth = 0
+                            self.progressWidth = geo.size.width - 100
                         }
                     }
                 }
@@ -57,6 +58,9 @@ struct TimerDurationView: View {
                     .foregroundColor(Color.black)
                     .font(.system(size: 14, weight: .regular))
             }
+            .onAppear(perform: {
+                progressWidth = geo.size.width - 100
+            })
         }
     }
 }
