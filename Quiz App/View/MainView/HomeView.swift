@@ -90,6 +90,10 @@ struct HomeView: View {
                     
                 })
             }
+            
+            if quizViewModel.isDataLoading {
+                LoadingAnimationView()
+            }
         }
         .customNavBar(isAlert: $isAlert, isHome: true, isTrailing: true)
         .navigationBarHidden(false)

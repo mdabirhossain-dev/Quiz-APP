@@ -24,6 +24,9 @@
 		106D9CB42C676EC4001FDF03 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D9CB32C676EC4001FDF03 /* HomeView.swift */; };
 		106D9CB62C676EDF001FDF03 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D9CB52C676EDF001FDF03 /* QuizModel.swift */; };
 		106D9CB82C676F0C001FDF03 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D9CB72C676F0C001FDF03 /* QuizViewModel.swift */; };
+		10B91CB52C6ABD2E00EB0B0C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 10B91CB42C6ABD2E00EB0B0C /* Lottie */; };
+		10B91CB72C6ABF3800EB0B0C /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B91CB62C6ABF3800EB0B0C /* LoadingAnimationView.swift */; };
+		10B91CBA2C6AC03100EB0B0C /* loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 10B91CB92C6AC03100EB0B0C /* loading_animation.json */; };
 		10DEA09D2C6761C60079C9C4 /* Quiz_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DEA09C2C6761C60079C9C4 /* Quiz_AppApp.swift */; };
 		10DEA0A12C6761C70079C9C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10DEA0A02C6761C70079C9C4 /* Assets.xcassets */; };
 		10DEA0A42C6761C70079C9C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10DEA0A32C6761C70079C9C4 /* Preview Assets.xcassets */; };
@@ -46,6 +49,8 @@
 		106D9CB32C676EC4001FDF03 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		106D9CB52C676EDF001FDF03 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		106D9CB72C676F0C001FDF03 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		10B91CB62C6ABF3800EB0B0C /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		10B91CB92C6AC03100EB0B0C /* loading_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_animation.json; sourceTree = "<group>"; };
 		10DEA0992C6761C60079C9C4 /* Quiz App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10DEA09C2C6761C60079C9C4 /* Quiz_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_AppApp.swift; sourceTree = "<group>"; };
 		10DEA0A02C6761C70079C9C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				105198042C69556F00E9797B /* SDWebImageSwiftUI in Frameworks */,
+				10B91CB52C6ABD2E00EB0B0C /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +86,7 @@
 				103855192C67CB250053048F /* QuizHomeBottomInfoView.swift */,
 				103855222C67EEC50053048F /* PopUpAlertView.swift */,
 				10053EFE2C68939C007D0770 /* TimerDurationView.swift */,
+				10B91CB62C6ABF3800EB0B0C /* LoadingAnimationView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -105,6 +112,14 @@
 			path = CustomUIComponents;
 			sourceTree = "<group>";
 		};
+		10B91CB82C6ABFAB00EB0B0C /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				10B91CB92C6AC03100EB0B0C /* loading_animation.json */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
 		10DEA0902C6761C60079C9C4 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +143,7 @@
 				10DEA0AA2C67621C0079C9C4 /* View */,
 				10DEA0AC2C6762320079C9C4 /* ViewModel */,
 				103855122C67728F0053048F /* Extension */,
+				10B91CB82C6ABFAB00EB0B0C /* Files */,
 				10DEA09C2C6761C60079C9C4 /* Quiz_AppApp.swift */,
 				10DEA0A02C6761C70079C9C4 /* Assets.xcassets */,
 				10DEA0A22C6761C70079C9C4 /* Preview Content */,
@@ -188,6 +204,7 @@
 			name = "Quiz App";
 			packageProductDependencies = (
 				105198032C69556F00E9797B /* SDWebImageSwiftUI */,
+				10B91CB42C6ABD2E00EB0B0C /* Lottie */,
 			);
 			productName = "Quiz App";
 			productReference = 10DEA0992C6761C60079C9C4 /* Quiz App.app */;
@@ -219,6 +236,7 @@
 			mainGroup = 10DEA0902C6761C60079C9C4;
 			packageReferences = (
 				105198022C69556F00E9797B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				10B91CB32C6ABD2E00EB0B0C /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 10DEA09A2C6761C60079C9C4 /* Products */;
 			projectDirPath = "";
@@ -236,6 +254,7 @@
 			files = (
 				10DEA0A42C6761C70079C9C4 /* Preview Assets.xcassets in Resources */,
 				10DEA0A12C6761C70079C9C4 /* Assets.xcassets in Resources */,
+				10B91CBA2C6AC03100EB0B0C /* loading_animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +271,7 @@
 				1038551F2C67E0DB0053048F /* RoundedButtonStyle.swift in Sources */,
 				10053EFF2C68939C007D0770 /* TimerDurationView.swift in Sources */,
 				1038551A2C67CB250053048F /* QuizHomeBottomInfoView.swift in Sources */,
+				10B91CB72C6ABF3800EB0B0C /* LoadingAnimationView.swift in Sources */,
 				103855252C67EFC30053048F /* ImageAsset.swift in Sources */,
 				103855182C67AC590053048F /* CustomNavBarModifier.swift in Sources */,
 				103855292C67FC250053048F /* Collection.swift in Sources */,
@@ -479,6 +499,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		10B91CB32C6ABD2E00EB0B0C /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -486,6 +514,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 105198022C69556F00E9797B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		10B91CB42C6ABD2E00EB0B0C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10B91CB32C6ABD2E00EB0B0C /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

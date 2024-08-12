@@ -14,6 +14,7 @@ import Foundation
 class QuizViewModel: ObservableObject {
     
     @Published var quizData: QuizModel? = nil
+    @Published var isDataLoading = false
     
     // Timer/Duration
     @Published var timer: Timer?
@@ -35,6 +36,9 @@ class QuizViewModel: ObservableObject {
     
     /// Fetching questions from API
     func getQuizData() {
+        /// Start loading animation
+        isDataLoading = true
+        
         let mainUrl = "https://herosapp.nyc3.digitaloceanspaces.com/quiz.json"
         guard let url = URL(string: mainUrl) else { return }
         
@@ -44,6 +48,11 @@ class QuizViewModel: ObservableObject {
                 let response = try? JSONDecoder().decode(QuizModel.self, from: data)
                 print("Response : \(response.debugDescription)")
                 self.quizData = response
+                
+                /// Finish loading animation
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isDataLoading = false
+                }
             }
         }
         .resume()
@@ -109,7 +118,7 @@ class QuizViewModel: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.isNextButtonDisabled = false
-         }
+        }
     }
     
     /// Saving HighScore only if new score is greater than previously saved value
