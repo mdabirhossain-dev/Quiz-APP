@@ -14,9 +14,9 @@ import Combine
 struct TimerDurationView: View {
     
     @Binding var duration: Int
-    @State private var progressWidth = 0
-    @State var connectedTimer: Cancellable? = nil
-    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var progressWidth: CGFloat = 0
+    @State private var connectedTimer: Cancellable? = nil
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         GeometryReader { geo in
@@ -41,7 +41,7 @@ struct TimerDurationView: View {
                     } else {
                         duration -= 1
                         withAnimation(.linear(duration: 1)) {
-                            progressWidth += Int(geo.size.width - 100) / 10
+                            progressWidth += CGFloat(geo.size.width - 100) / CGFloat(10)
                         }
                     }
                 }
@@ -61,11 +61,11 @@ struct TimerDurationView: View {
     }
 }
 
-//struct TimerDurationView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TimerDurationView()
-//    }
-//}
+struct TimerDurationView_Previews: PreviewProvider {
+    static var previews: some View {
+        TimerDurationView(duration: .constant(10))
+    }
+}
 
 
 struct AnswerSelectionCellView: View {
