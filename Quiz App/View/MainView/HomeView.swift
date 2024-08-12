@@ -69,6 +69,7 @@ struct HomeView: View {
                 QuizHomeBottomInfoView(isAlert: $isAlert)
                     .background(Color.white.ignoresSafeArea(.all, edges: .bottom))
                     .clipShape(CustomRoundedCorners(topLeft: 30, topRight: 30))
+                    .environmentObject(quizViewModel)
             }
             .foregroundColor(.white)
             

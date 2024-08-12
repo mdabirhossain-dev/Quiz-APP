@@ -12,16 +12,17 @@ import SwiftUI
 
 struct QuizHomeBottomInfoView: View {
     
+    @EnvironmentObject var quizViewModel: QuizViewModel
     @Binding var isAlert: Bool
     
     /// Timer
-    @State private var timer: Timer?
-    @State private var endDate = "15-08-2024"
-    @State private var remainingTime = "Enter an end date"
-    @State private var remainingDays = 0
-    @State private var remainingHours = 0
-    @State private var remainingMinutes = 0
-    @State private var remainingSeconds = 0
+//    @State private var timer: Timer?
+//    @State private var endDate = "15-08-2024"
+//    @State private var remainingTime = "Enter an end date"
+//    @State private var remainingDays = 0
+//    @State private var remainingHours = 0
+//    @State private var remainingMinutes = 0
+//    @State private var remainingSeconds = 0
     
     var body: some View {
         
@@ -40,17 +41,17 @@ struct QuizHomeBottomInfoView: View {
             
             VStack(alignment: .center) {
                 HStack {
-                    if remainingDays > 0 {
-                        TimerCellView(time: $remainingDays, timeType: "Days")
+                    if quizViewModel.remainingDays > 0 {
+                        TimerCellView(time: $quizViewModel.remainingDays, timeType: "Days")
                     }
                     
-                    if remainingHours > 0 {
-                        TimerCellView(time: $remainingHours, timeType: "Hours")
+                    if quizViewModel.remainingHours > 0 {
+                        TimerCellView(time: $quizViewModel.remainingHours, timeType: "Hours")
                     }
                     
-                    TimerCellView(time: $remainingMinutes, timeType: "Minutes")
+                    TimerCellView(time: $quizViewModel.remainingMinutes, timeType: "Minutes")
                     
-                    TimerCellView(time: $remainingSeconds, timeType: "Seconds")
+                    TimerCellView(time: $quizViewModel.remainingSeconds, timeType: "Seconds")
                 }
             }
             .frame(maxWidth: .infinity)
@@ -73,59 +74,8 @@ struct QuizHomeBottomInfoView: View {
         .background(Color.white)
 //        .clipShape(CustomRoundedCorners(topLeft: 30, topRight: 30))
         .onAppear(perform: {
-            startTimer()
+            quizViewModel.startTimer()
         })
-    }
-    
-    func startTimer() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        
-        if let endDate = formatter.date(from: self.endDate) {
-            let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                let currentDate = Date()
-                
-                let calendar = Calendar.current
-                let difference = calendar.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: endDate)
-                
-                if difference.day! > 0 {
-                    remainingDays = difference.day!
-                    remainingHours = difference.hour!
-                    remainingMinutes = difference.minute!
-                    remainingSeconds = difference.second!
-                    
-                    remainingTime = "\(difference.day!) d  \(difference.hour!) h \(difference.minute!) m \(difference.second!) s"
-                } else if difference.hour! > 0 {
-                    remainingHours = difference.hour!
-                    remainingMinutes = difference.minute!
-                    remainingSeconds = difference.second!
-                    
-                    remainingTime = "\(difference.hour!) h  \(difference.minute!) m \(difference.second!) s"
-                } else if difference.minute! > 0 {
-                    remainingMinutes = difference.minute!
-                    remainingSeconds = difference.second!
-                    
-                    remainingTime = "\(difference.minute!) m \(difference.second!) s"
-                } else {
-                    remainingSeconds = difference.second!
-                    
-                    remainingTime = "\(difference.second!) s"
-                }
-                
-                if currentDate >= endDate {
-                    stopTimer()
-                }
-            }
-            
-            self.timer = timer
-        } else {
-            remainingTime = "Invalid date format"
-        }
-    }
-    
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
     }
 }
 
