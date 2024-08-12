@@ -11,7 +11,7 @@
 import Foundation
 
 struct QuizModel: Codable {
-    let questions: [Question]?
+    var questions: [Question]?
 }
 
 struct Question: Codable {
@@ -19,7 +19,6 @@ struct Question: Codable {
     let answers: Answers?
     let questionImageURL: String?
     let correctAnswer: String?
-    var selectedAnswer: String?
     let score: Int?
 
     enum CodingKeys: String, CodingKey {

@@ -15,14 +15,10 @@ struct QuizView: View {
     
     @Environment(\.presentationMode) var presentation
     @EnvironmentObject var quizViewModel: QuizViewModel
-//    @State private var selectedIndex = 0
-//    @State private var duration = 10
     
     @State private var isAlert = false
     @State private var isFinished = false
     
-//    @State private var totalCoin = 0
-//    @State private var totalCorrectAns = 0
     var totalQuestion: Int {
         return (quizViewModel.quizData?.questions?.count ?? 0)
     }
@@ -114,15 +110,20 @@ struct QuizView: View {
                         imageAsset = ImageAsset.warningSuccess
                         alertMsg = AlertWarning.warningSuccess
                     }
-                    quizViewModel.duration = 10
+                    
+                    quizViewModel.nextButtonAction()
                 }
                 .buttonStyle(CustomRoundedButtonStyle(height: 56, cornerRadius: 28))
                 .padding(.vertical, 10)
+                .disabled(quizViewModel.isNextButtonDisabled)
             }
             .padding(.all)
             .frame(maxWidth: screenWidth - 20, maxHeight: .infinity, alignment: .top)
             .background(Color.white)
             .clipShape(CustomRoundedCorners(topLeft: 20, topRight: 20, bottomLeft: 20, bottomRight: 20))
+            .onAppear(perform: {
+                quizViewModel.resetValues()
+            })
             
             if isAlert {
                 PopUpAlertView(isAlert: $isAlert, alertType: AlertType.otherAction, imageAsset: .warningBack, alertMsg: .warningBack, description: "", yesAction: {
@@ -136,12 +137,13 @@ struct QuizView: View {
                 PopUpAlertView(isAlert: $isAlert, alertType: AlertType.quizFinished, imageAsset: .warningSuccess, alertMsg: .warningSuccess, description: "You have complete your Quiz. Correct answer \(quizViewModel.totalCorrectAns)/\(totalQuestion) and you earn ", yesAction: {
                     
                 }, backToHomeAction: {
+                    quizViewModel.saveHighScore()
                     presentation.wrappedValue.dismiss()
                 })
             }
         }
         .customNavBar(isAlert: $isAlert, isHome: false, isTrailing: false)
-        .navigationTitle("🕣 2:36")
+        .navigationTitle("🕒 \(quizViewModel.remainingTime)")
         .preferredColorScheme(.dark)
         .navigationBarTitleDisplayMode(.inline)
     }

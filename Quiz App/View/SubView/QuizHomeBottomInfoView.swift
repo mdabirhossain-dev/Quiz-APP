@@ -15,18 +15,7 @@ struct QuizHomeBottomInfoView: View {
     @EnvironmentObject var quizViewModel: QuizViewModel
     @Binding var isAlert: Bool
     
-    /// Timer
-//    @State private var timer: Timer?
-//    @State private var endDate = "15-08-2024"
-//    @State private var remainingTime = "Enter an end date"
-//    @State private var remainingDays = 0
-//    @State private var remainingHours = 0
-//    @State private var remainingMinutes = 0
-//    @State private var remainingSeconds = 0
-    
     var body: some View {
-        
-        let screenHeight = UIScreen.main.bounds.height
         
         VStack(alignment: .leading, spacing: 16) {
             Text("Today's Quiz on")
@@ -66,9 +55,6 @@ struct QuizHomeBottomInfoView: View {
         .padding()
         .padding(.top)
         .foregroundColor(.black)
-//        .frame(height: screenHeight / 2)
-        .background(Color.white)
-//        .clipShape(CustomRoundedCorners(topLeft: 30, topRight: 30))
         .onAppear(perform: {
             quizViewModel.startTimer()
         })

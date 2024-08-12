@@ -59,6 +59,7 @@ struct TimerDurationView: View {
                     .font(.system(size: 14, weight: .regular))
             }
             .onAppear(perform: {
+                duration = 10
                 progressWidth = geo.size.width - 100
             })
         }
@@ -75,34 +76,71 @@ struct TimerDurationView_Previews: PreviewProvider {
 struct AnswerSelectionCellView: View {
     
     @EnvironmentObject var quizViewModel: QuizViewModel
-//    @Binding var question: Question
     let index: Int
     
-    var selectedAnswer: Bool {
-        return false
-    }
+    @State private var selectedAnswer = ""
     
     var body: some View {
         VStack(spacing: 16) {
-            Button(quizViewModel.quizData?.questions?[index].answers?.a ?? "") {
-                
+            let question = quizViewModel.quizData?.questions?[index]
+            Button("A.  \(question?.answers?.a ?? "")") {
+                checkAnswer(ans: "A")
             }
-            .buttonStyle(AnswerSelectionButtonStyle(false))
+            .buttonStyle(AnswerSelectionButtonStyle(outputForButton(ans: "A")))
             
-            Button(quizViewModel.quizData?.questions?[index].answers?.b ?? "") {
-                
+            Button("B.  \(question?.answers?.b ?? "")") {
+                checkAnswer(ans: "B")
             }
-            .buttonStyle(AnswerSelectionButtonStyle(true))
+            .buttonStyle(AnswerSelectionButtonStyle(outputForButton(ans: "B")))
             
-            Button(quizViewModel.quizData?.questions?[index].answers?.c ?? "") {
-                
+            Button("C.  \(question?.answers?.c ?? "")") {
+                checkAnswer(ans: "C")
             }
-            .buttonStyle(AnswerSelectionButtonStyle(nil))
+            .buttonStyle(AnswerSelectionButtonStyle(outputForButton(ans: "C")))
             
-            Button(quizViewModel.quizData?.questions?[index].answers?.d ?? "") {
-                
+            Button("D.  \(question?.answers?.d ?? "")") {
+                checkAnswer(ans: "D")
             }
-            .buttonStyle(AnswerSelectionButtonStyle(nil))
+            .buttonStyle(AnswerSelectionButtonStyle(outputForButton(ans: "D")))
+        }
+        .disabled(selectedAnswer.isNotEmpty || quizViewModel.duration <= 0)
+    }
+    
+    func outputForButton(ans: String) -> String {
+        let answer = quizViewModel.quizData?.questions?[index].correctAnswer
+        var value = ""
+        
+        if selectedAnswer != "" {
+            if selectedAnswer == answer && selectedAnswer == ans {
+                value = "g"
+            } else {
+                if selectedAnswer != answer && answer == ans {
+                    value = "g"
+                } else {
+                    if selectedAnswer != answer && selectedAnswer != ans {
+                        value = "w"
+                    } else {
+                        if selectedAnswer != answer && selectedAnswer == ans {
+                            value = "r"
+                        } else {
+                            value = "w"
+                        }
+                    }
+                }
+            }
+        } else {
+            value = "w"
+            print("Value6: \(value)")
+        }
+        
+        return value
+    }
+    
+    func checkAnswer(ans: String) {
+        selectedAnswer = ans
+        if selectedAnswer == quizViewModel.quizData?.questions?[index].correctAnswer {
+            quizViewModel.totalCoin += quizViewModel.quizData?.questions?[index].score ?? 0
+            quizViewModel.totalCorrectAns += 1
         }
     }
 }

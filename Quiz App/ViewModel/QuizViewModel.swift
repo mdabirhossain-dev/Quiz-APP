@@ -31,6 +31,8 @@ class QuizViewModel: ObservableObject {
     @Published var totalCoin = 0
     @Published var totalCorrectAns = 0
     
+    @Published var isNextButtonDisabled = false
+    
     func getQuizData() {
         let mainUrl = "https://herosapp.nyc3.digitaloceanspaces.com/quiz.json"
         guard let url = URL(string: mainUrl) else { return }
@@ -63,22 +65,22 @@ class QuizViewModel: ObservableObject {
                     self.remainingMinutes = difference.minute!
                     self.remainingSeconds = difference.second!
                     
-                    self.remainingTime = "\(difference.day!) d  \(difference.hour!) h \(difference.minute!) m \(difference.second!) s"
+                    self.remainingTime = "\(difference.day!)d : \(difference.hour!)h : \(difference.minute!)m" // \(difference.second!) s"
                 } else if difference.hour! > 0 {
                     self.remainingHours = difference.hour!
                     self.remainingMinutes = difference.minute!
                     self.remainingSeconds = difference.second!
                     
-                    self.remainingTime = "\(difference.hour!) h  \(difference.minute!) m \(difference.second!) s"
+                    self.remainingTime = "\(difference.hour!)h : \(difference.minute!)m" // \(difference.second!) s"
                 } else if difference.minute! > 0 {
                     self.remainingMinutes = difference.minute!
                     self.remainingSeconds = difference.second!
                     
-                    self.remainingTime = "\(difference.minute!) m \(difference.second!) s"
+                    self.remainingTime = "\(difference.minute!) m" // \(difference.second!) s"
                 } else {
                     self.remainingSeconds = difference.second!
                     
-                    self.remainingTime = "\(difference.second!) s"
+//                    self.remainingTime = "\(difference.second!) s"
                 }
                 
                 if currentDate >= endDate {
@@ -95,5 +97,27 @@ class QuizViewModel: ObservableObject {
     func stopTimer() {
         timer?.invalidate()
         timer = nil
+    }
+    
+    func nextButtonAction() {
+        duration = 10
+        isNextButtonDisabled = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.isNextButtonDisabled = false
+         }
+    }
+    
+    func saveHighScore() {
+            let defaults = UserDefaults.standard
+            defaults.set(totalCoin, forKey: "HighScore")
+    }
+    
+    func resetValues() {
+        selectedIndex = 0
+        duration = 10
+        totalCoin = 0
+        totalCorrectAns = 0
+        isNextButtonDisabled = false
     }
 }

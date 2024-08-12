@@ -13,29 +13,30 @@ import SwiftUI
 
 struct AnswerSelectionButtonStyle: ButtonStyle {
     
-    let isAnswer: Bool?
+    let isAnswer: String
     var foregroundColor: Color {
-        let color: Color = isAnswer == nil ? .black : (isAnswer ?? false ? .black : .white)
+        let color: Color = isAnswer == "w" ? .black : (isAnswer == "g" ? .black : .white)
         return color
     }
     var backgroundColor: Color {
-        let color: Color = isAnswer == nil ? .white : (isAnswer ?? false ? .rightAnsGreen : .wrongAnsRed)
+        let color: Color = isAnswer == "w" ? .white : (isAnswer == "g" ? .rightAnsGreen : .wrongAnsRed)
         return color
     }
     var borderStroke: Color {
-        let color: Color = isAnswer == nil ? .gray.opacity(0.3) : (isAnswer ?? false ? .green.opacity(0.8) : .wrongAnsRed)
+        let color: Color = isAnswer == "w" ? .gray.opacity(0.3) : (isAnswer == "g" ? .green.opacity(0.8) : .wrongAnsRed)
         return color
     }
     
-    init(_ isAnswer: Bool?) {
+    init(_ isAnswer: String) {
         self.isAnswer = isAnswer
     }
     
     func makeBody(configuration: Self.Configuration) -> some View {
         return configuration.label
+            .padding(.leading)
             .foregroundColor(foregroundColor)
             .font(.system(size: 16, weight: .semibold))
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .frame(height: 44)
             .brightness(configuration.isPressed ? 0.09 : 0)
             .background(backgroundColor)

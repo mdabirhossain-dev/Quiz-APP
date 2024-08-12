@@ -12,6 +12,7 @@ import SwiftUI
 
 struct PopUpAlertView: View {
     
+    @EnvironmentObject var quizViewModel: QuizViewModel
     @Binding var isAlert: Bool
     let alertType: AlertType
     let imageAsset: ImageAsset
@@ -47,7 +48,7 @@ struct PopUpAlertView: View {
                     HStack {
                         Text(description) +
                         
-                        Text("**350**")
+                        Text("**\(quizViewModel.totalCoin)**")
                             .foregroundColor(.darkRed) +
                         
                         Text(" coin")

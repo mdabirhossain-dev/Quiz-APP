@@ -69,8 +69,8 @@ struct HomeView: View {
                 QuizHomeBottomInfoView(isAlert: $isAlert)
                     .background(
                         Color.white
-                            .ignoresSafeArea(.all, edges: .bottom)
                             .clipShape(CustomRoundedCorners(topLeft: 30, topRight: 30))
+                            .ignoresSafeArea(.all, edges: .bottom)
                     )
                     .environmentObject(quizViewModel)
             }
@@ -96,7 +96,10 @@ struct HomeView: View {
         }
         .onAppear(perform: {
             UIScrollView.appearance().bounces = false
-            quizViewModel.getQuizData()
+            
+            if quizViewModel.quizData == nil {
+                quizViewModel.getQuizData()
+            }
         })
     }
 }
