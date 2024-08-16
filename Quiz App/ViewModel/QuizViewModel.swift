@@ -89,7 +89,7 @@ class QuizViewModel: ObservableObject {
                     
                     self.remainingTime = "\(difference.minute!) m" // \(difference.second!) s"
                 } else {
-                    self.remainingSeconds = difference.second!
+                    self.remainingSeconds = difference.second! <= 0 ? 0 : difference.second!
                     
 //                    self.remainingTime = "\(difference.second!) s"
                 }

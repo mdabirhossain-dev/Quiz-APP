@@ -23,9 +23,13 @@ struct QuizHomeBottomInfoView: View {
                 .foregroundColor(.gray)
                 .font(.system(size: 13))
             
+            Spacer()
+            
             Text("General Knowledge")
                 .foregroundColor(.darkRed)
                 .font(.system(size: 20, weight: .heavy))
+            
+            Spacer()
             
             Text("The Quiz ends in")
                 .foregroundColor(.gray)
@@ -45,6 +49,8 @@ struct QuizHomeBottomInfoView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.top, -8)
+            
+            Spacer()
             
             Button("PLAY QUIZ NOW") {
                 withAnimation {

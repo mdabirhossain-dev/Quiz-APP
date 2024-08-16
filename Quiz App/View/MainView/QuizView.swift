@@ -43,7 +43,7 @@ struct QuizView: View {
                     
                     Spacer()
                     
-                    Text("\(quizViewModel.totalCoin)").foregroundColor(Color.darkRed)
+                    Text("\(quizViewModel.quizData?.questions?[quizViewModel.selectedIndex].score ?? 0)").foregroundColor(Color.darkRed)
                         .font(.system(size: 19, weight: .bold))
                     
                     Image("coins")
