@@ -18,18 +18,16 @@ struct QuizHomeBottomInfoView: View {
     
     var body: some View {
         
+        let screenHeight = UIScreen.main.bounds.height
+        
         VStack(alignment: .leading, spacing: 16) {
             Text("Today's Quiz on")
                 .foregroundColor(.gray)
                 .font(.system(size: 13))
             
-            Spacer()
-            
             Text("General Knowledge")
                 .foregroundColor(.darkRed)
                 .font(.system(size: 20, weight: .heavy))
-            
-            Spacer()
             
             Text("The Quiz ends in")
                 .foregroundColor(.gray)
@@ -50,7 +48,7 @@ struct QuizHomeBottomInfoView: View {
             .frame(maxWidth: .infinity)
             .padding(.top, -8)
             
-            Spacer()
+//            Spacer()
             
             Button("PLAY QUIZ NOW") {
                 withAnimation {
@@ -62,6 +60,7 @@ struct QuizHomeBottomInfoView: View {
             
             Spacer()
         }
+        .ignoresSafeArea(.all, edges: .bottom)
         .padding()
         .padding(.top)
         .foregroundColor(.black)

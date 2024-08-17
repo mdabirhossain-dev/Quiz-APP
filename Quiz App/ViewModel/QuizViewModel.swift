@@ -19,7 +19,7 @@ class QuizViewModel: ObservableObject {
     // Timer/Duration
     @Published var timer: Timer?
     @Published var endDate = "15-08-2024 23:59" // "15-08-2024"
-    @Published var remainingTime = "Enter an end date"
+    @Published var remainingTime = "Time Up"
     @Published var remainingDays = 0
     @Published var remainingHours = 0
     @Published var remainingMinutes = 0

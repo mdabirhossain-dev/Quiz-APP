@@ -56,7 +56,7 @@ struct HomeView: View {
                         .padding(.trailing, -16)
                         .padding(.bottom, 16)
                 }
-                .frame(height: screenHeight / 4.5)
+//                .frame(height: screenHeight / 4.5)
                 .padding([.horizontal, .top])
                 
                 VStack(alignment: .leading, spacing: 16) {
@@ -73,6 +73,8 @@ struct HomeView: View {
                 
                 // MARK: - Bottom portion
                 QuizHomeBottomInfoView(isAlert: $isAlert)
+//                    .frame(height: screenHeight / 3)
+                    .ignoresSafeArea(.all, edges: .bottom)
                     .background(
                         Color.white
                             .clipShape(CustomRoundedCorners(topLeft: 30, topRight: 30))
@@ -95,6 +97,7 @@ struct HomeView: View {
                 LoadingAnimationView()
             }
         }
+        .ignoresSafeArea(.all, edges: .bottom)
         .customNavBar(isAlert: $isAlert, isHome: true, isTrailing: true)
         .navigationBarHidden(false)
         .navigationBarBackButtonHidden(true)
